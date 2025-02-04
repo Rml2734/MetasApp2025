@@ -1,4 +1,5 @@
-import './App.css'
+
+import './App.css';
 import Encabezamiento from './componentes/compartidos/Encabezamiento';
 import Pie from './componentes/compartidos/Pie';
 import Principal from './componentes/compartidos/Principal';
@@ -14,4 +15,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

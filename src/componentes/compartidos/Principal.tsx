@@ -1,14 +1,17 @@
-function Principal({ children }) {
+import { ReactNode } from 'react';
+
+
+function Principal({ children }: { children: ReactNode } ) {
     return (
-        <>
-            <sidenav>
+        <div>
+            <aside>
                 <a href="/lista">Lista</a>
                 <a href="/crear">Crear</a>
-            </sidenav>
+            </aside>
             <main>
                 {children}
             </main>
-        </>
+        </div>
     );
   }
   
