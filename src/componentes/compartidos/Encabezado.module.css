@@ -20,22 +20,8 @@
   width: 40px; /* w-10 */
 }
 
-.icono {
-    height: 24px; /* h-6 */
-  width: 24px; /* w-6 */
-}
 
-.vinculo {
-  display: flex;
-  align-items: center;
-  padding: 0 16px; /* px-4 */
-  height: 48px; /* h-xl */
-  transition: background-color 0.3s ease;
-}
 
-.vinculo:hover {
-    background-color: #e5e7eb; /* hover:bg-gray-200 */
-  }
 
 .titulo {
   .tu-clase-css {

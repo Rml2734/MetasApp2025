@@ -1,0 +1,24 @@
+.icono {
+    height: 24px; /* h-6 */
+    width: 24px; /* w-6 */
+  }
+
+.vinculo {
+  display: flex;               /* flex */
+  align-items: center;         /* items-center */
+  padding-left: 1rem;          /* px-4 (1rem a la izquierda) */
+  padding-right: 1rem;         /* px-4 (1rem a la derecha) */
+  height: 48px;                /* h-xl: ajusta el valor según tu configuración */
+  transition: background-color 0.3s ease; /* Transición para el hover (opcional) */
+}
+
+.vinculo:hover {
+    background-color: #E5E7EB;   /* hover:bg-gray-200: color de fondo en hover */
+}
+
+.texto {
+    margin-left: 0.5rem; /* ml-2 -> 8px (0.5rem) */
+  font-size: 0.875rem; /* text-sm -> 14px (0.875rem) */
+  font-weight: 600; /* font-semibold */
+  color: #111827; /* text-gray-900 -> gris oscuro */
+}

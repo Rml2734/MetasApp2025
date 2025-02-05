@@ -7,7 +7,7 @@
   background-image: linear-gradient(to right, #ec4899, #8b5cf6);
 
   /* h-md: altura personalizada; ajústala según tus necesidades */
-  height: 15px;
+  height: 20px;
 
   /* text-xs: tamaño de texto extra pequeño (0.75rem es lo habitual en Tailwind) */
   font-size: 0.75rem;

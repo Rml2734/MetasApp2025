@@ -1,0 +1,31 @@
+:root {
+  --altura-principal: 64px; /* 64px Define aquí el valor que desees */
+}
+
+.principal {
+  height: calc(100vh - var(--altura-principal));
+  display: flex;
+}
+
+.aside {
+  /* flex */
+  display: flex;
+  /* flex-col */
+  flex-direction: column;
+  /* text-gray-700 (valor por defecto de Tailwind: #374151) */
+  color: #374151;
+  /* bg-gray-100 (valor por defecto de Tailwind: #f3f4f6) */
+  background-color: #f3f4f6;
+  /* shadow (sombra predeterminada de Tailwind) */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  /* w-60 (Tailwind: 15rem) */
+  width: 15rem;
+  /* h-full */
+  height: 100%;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
