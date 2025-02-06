@@ -13,7 +13,7 @@ function Encabezamiento() {
         <nav>
         <Vinculo 
             href="/perfil" 
-            Icono={PerfilSVG}
+            Icono={PerfilSVG} 
         />
 
          

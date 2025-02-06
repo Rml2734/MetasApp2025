@@ -1,4 +1,3 @@
-
 import './App.css';
 import Encabezamiento from './componentes/compartidos/Encabezamiento';
 import Pie from './componentes/compartidos/Pie';
