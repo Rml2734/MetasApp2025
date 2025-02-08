@@ -10,6 +10,7 @@
   padding-right: 1rem;         /* px-4 (1rem a la derecha) */
   height: 48px;                /* h-xl: ajusta el valor según tu configuración */
   transition: background-color 0.3s ease; /* Transición para el hover (opcional) */
+  text-decoration: none; /* Esto quita el subrayado */
 }
 
 .vinculo:hover {

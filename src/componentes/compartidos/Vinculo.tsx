@@ -1,8 +1,9 @@
 import styles from "./Vinculo.module.css";
 import { ReactNode } from 'react';
+import { FunctionComponent, SVGProps } from 'react';
 
 interface VinculoProps {
-    Icono: any;
+    Icono: FunctionComponent<SVGProps<SVGSVGElement>>;
     href: string;
     texto: string;
     children?: ReactNode;

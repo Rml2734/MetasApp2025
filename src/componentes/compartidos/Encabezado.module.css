@@ -9,7 +9,7 @@
 }
 
 .contenedor {
-  Display: flex;
+  display: flex;
   align-items: center;
   padding-left: 16px; /* pl-4 */
 }
@@ -21,11 +21,10 @@
 }
 
 .titulo {
-  .tu-clase-css {
-    font-size: 1.125rem;    /* Equivalente a text-lg */
-    line-height: 1.75rem;   /* Line-height por defecto de text-lg */
-    font-weight: 600;       /* Equivalente a font-semibold */
-    color: #111827;         /* Equivalente a text-gray-900 */
-    text-transform: uppercase; /* Equivalente a uppercase */
-  }
+  font-size: 1.125rem; /* Equivalente a text-lg */
+  line-height: 1.75rem; /* Line-height por defecto de text-lg */
+  font-weight: 600; /* Equivalente a font-semibold */
+  color: #111827; /* Equivalente a text-gray-900 */
+  text-transform: uppercase; /* Equivalente a uppercase */
+  text-decoration: none; /* Esto quita el subrayado */
 }

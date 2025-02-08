@@ -1,0 +1,69 @@
+.meta {
+  display: flex;
+
+  /* Espaciado interno */
+  padding: 0.5rem; /* p-2 (Tailwind usa 1 unidad = 0.25rem, 2 unidades = 0.5rem) */
+
+  /* Alineación horizontal */
+  justify-content: space-between; /* justify-between */
+  align-items: center; /* Nueva línea para alineación vertical general */
+}
+
+.icono {
+  /* h-10: 2.5rem (40px, si 1rem = 16px) */
+  height: 2.5rem;
+
+  /* w-10: 2.5rem (40px) */
+  width: 2.5rem;
+
+  /* nm-inset-gray-100: efecto neumórfico de inserción con un fondo gris claro */
+  /* Nota: este valor puede variar según la configuración de neumorfismo en Tailwind; aquí se usa un ejemplo */
+  background-color: #f3f4f6;
+  box-shadow: inset 4px 4px 6px rgba(0, 0, 0, 0.1),
+    inset -4px -4px 6px rgba(255, 255, 255, 0.7);
+
+  /* rounded-full: bordes completamente redondeados */
+  border-radius: 9999px;
+
+  /* flex, items-center y justify-center: centra el contenido */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* text-xl: tamaño de fuente de 1.25rem (20px) */
+  font-size: 1.25rem;
+}
+
+.frecuencia {
+  /* Tamaño de texto (text-xl) */
+  font-size: 1.25rem; /* 20px en pantallas estándar */
+  line-height: 1.75rem; /* 28px - valor por defecto de Tailwind para text-xl */
+
+  /* Márgenes (ml-5 = margin-left: 1.25rem, mr-10 = margin-right: 2.5rem) */
+  margin-left: 1.25rem; /* 5 × 0.25rem = 1.25rem */
+  margin-right: 2.5rem; /* 10 × 0.25rem = 2.5rem */
+}
+
+.flex1 {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Añadir esto y eliminar márgenes individuales */
+}
+
+.flex2 {
+  display: flex;
+  align-items: center; /* Añadir esta línea */
+  gap: 1rem; /* Espaciado entre elementos */
+}
+
+.sub {
+  /* text-xs */
+  font-size: 0.75rem; /* 12px (base 16px) */
+  line-height: 1rem; /* 16px - valor por defecto de Tailwind para text-xs */
+
+  /* text-gray-500 */
+  color: #6b7280; /* Color hexadecimal de Tailwind para gray-500 */
+
+  /* ml-1 */
+  margin-left: 0.25rem; /* 1 × 0.25rem = 0.25rem (4px) */
+}
