@@ -13,12 +13,12 @@ function Principal({ children }: PrincipalProps ) {
         <div className={styles.principal}>
             <aside className={styles.aside}>
                 <Vinculo 
-                   href="/lista" 
+                   to="/lista" 
                    texto="Lista de metas" 
                    Icono={ListaSVG}
                 />
                 <Vinculo 
-                    href="/crear" 
+                    to="/nueva" 
                     texto="Nueva Meta" 
                     Icono={NuevaSVG}
                     />

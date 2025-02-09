@@ -12,11 +12,10 @@ function Encabezamiento() {
         </div>
         <nav>
         <Vinculo 
-            href="/perfil" 
-            Icono={PerfilSVG} 
-        />
-
-         
+          to="/perfil"
+          Icono={PerfilSVG} 
+          texto={""}        
+        /> 
         </nav>
       </header>
   );
