@@ -1,6 +1,8 @@
 import styles from "./Meta.module.css";
+import { Link } from "react-router-dom";
 
 interface MetaProps {
+    id: string;
     icono: string;
     eventos: number;
     periodo: string;
@@ -9,10 +11,10 @@ interface MetaProps {
     completado: number;
   }
 
-function Meta({ icono, eventos, periodo, detalles, meta, completado }: MetaProps) {
+function Meta({ id, icono, eventos, periodo, detalles, meta, completado }: MetaProps) {
     
     return (
-        <div className={`${styles.meta} tarjeta`}>
+        <Link to={`/lista/${id}`} className={`${styles.meta} tarjeta`} >
             <div className={styles.correr}>
                 <div className={styles.icono}>{icono}</div>
                 <p className={styles.frecuencia}>{eventos}
@@ -32,7 +34,7 @@ function Meta({ icono, eventos, periodo, detalles, meta, completado }: MetaProps
                 </div>
                 <button className="boton boton--gris">Completado</button>
             </div>
-        </div>
+        </Link>
     );
 }
 
