@@ -1,12 +1,13 @@
 .meta {
   display: flex;
-
+  
   /* Espaciado interno */
   padding: 0.5rem; /* p-2 (Tailwind usa 1 unidad = 0.25rem, 2 unidades = 0.5rem) */
 
   /* Alineación horizontal */
   justify-content: space-between; /* justify-between */
   align-items: center; /* Nueva línea para alineación vertical general */
+  
 }
 
 .icono {
@@ -44,16 +45,18 @@
   margin-right: 2.5rem; /* 10 × 0.25rem = 2.5rem */
 }
 
-.flex1 {
+.correr {
   display: flex;
   align-items: center;
   gap: 1rem; /* Añadir esto y eliminar márgenes individuales */
 }
 
-.flex2 {
+.completo {
   display: flex;
   align-items: center; /* Añadir esta línea */
   gap: 1rem; /* Espaciado entre elementos */
+  
+  
 }
 
 .sub {
@@ -66,4 +69,56 @@
 
   /* ml-1 */
   margin-left: 0.25rem; /* 1 × 0.25rem = 0.25rem (4px) */
+}
+
+.incio {
+  /* relative */
+  position: relative;
+
+  /* m-2 */
+  margin: 0.5rem; /* 2 × 0.25rem = 0.5rem */
+
+  /* mx-5 */
+  margin-left: 1.25rem; /* 5 × 0.25rem = 1.25rem */
+  margin-right: 1.25rem;
+}
+
+.completa {
+   /* text-center de Tailwind */
+   text-align: center;
+}
+
+.barra1 {
+   /* nm-convex-gray-100 (neumorfismo convexo) */
+   background: #f3f4f6; /* gray-100 */
+   box-shadow: 
+     6px 6px 12px rgba(209, 213, 219, 0.5), /* Sombra exterior gris */
+     -6px -6px 12px rgba(255, 255, 255, 0.8); /* Sombra interior clara */
+ 
+   /* h-1 */
+   height: 0.25rem; /* 1 × 0.25rem = 0.25rem */
+ 
+   /* w-28 */
+   width: 7rem; /* 28 × 0.25rem = 7rem */
+ 
+   /* rounded */
+   border-radius: 0.25rem;
+ 
+   /* bg-blue-200 */
+   background-color: #bfdbfe; /* Color override para el fondo */
+}
+
+.barra2 {
+   /* h-1 */
+  height: 0.25rem; /* 1 × 0.25rem (Tailwind: 1 unidad = 0.25rem) */
+  
+  /* rounded */
+  border-radius: 0.25rem; /* Equivalente a 4px */
+  
+  /* bg-gradient-to-l from-green-200 to-blue-500 */
+  background-image: linear-gradient(
+    to left,
+    #bbf7d0,  /* from-green-200 */
+    #3b82f6   /* to-blue-500 */
+  );
 }

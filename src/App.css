@@ -17,4 +17,107 @@
 
   /* Overflow */
   overflow: hidden; /* overflow-hidden */
+  
 }
+
+.boton {
+  /* text-sm */
+  font-size: 0.875rem; /* 14px (tailwind: 14/16 = 0.875rem) */
+  line-height: 1.25rem; /* 20px - valor por defecto de text-sm */
+
+  /* font-bold */
+  font-weight: 700; /* equivalente a bold */
+
+  /* py-1 */
+  padding-top: 0.25rem; /* 1 × 0.25rem = 0.25rem (4px) */
+  padding-bottom: 0.25rem;
+
+  /* px-4 */
+  padding-left: 1rem; /* 4 × 0.25rem = 1rem (16px) */
+  padding-right: 1rem;
+
+  /* rounded-full */
+  border-radius: 9999px; /* forma de píldora/círculo completo */
+}
+
+.boton--negro {
+  /* text-white */
+  color: #ffffff;
+
+  /* nm-flat-gray-700 (neumorfismo plano con base gris-700) */
+  background-color: #374151; /* gray-700 */
+  box-shadow: 8px 8px 16px rgba(17, 24, 39, 0.5),
+    /* Sombra oscura (gray-900 con 50% opacidad) */ -8px -8px 16px
+      rgba(107, 114, 128, 0.5); /* Sombra clara (gray-500 con 50% opacidad) */
+
+  /* Transición para hover */
+  transition: all 0.3s ease;
+}
+
+.boton:hover {
+  /* hover:bg-gray-800 */
+  background-color: #1f2937; /* gray-800 */
+
+  /* Ajuste opcional de sombras para mantener contraste */
+  box-shadow: 8px 8px 16px rgba(17, 24, 39, 0.6),
+    -8px -8px 16px rgba(107, 114, 128, 0.4);
+}
+
+.boton--rojo {
+  /* text-red-500 */
+  color: #ef4444;
+
+  /* nm-flat-gray-100 (efecto neumórfico plano) */
+  background-color: #f3f4f6;
+  box-shadow: 8px 8px 16px rgba(209, 213, 219, 0.2),
+    /* gray-300 */ -8px -8px 16px rgba(255, 255, 255, 0.7);
+
+  /* border border-red-500 */
+  border: 1px solid #ef4444;
+
+  /* Transiciones */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.boton--rojo:hover {
+  background-color: #ef4444;
+
+  /* hover:text-white */
+  color: #ffffff;
+
+  /* Ajuste de sombras para el hover */
+  box-shadow: 8px 8px 16px rgba(220, 38, 38, 0.2),
+    /* red-600 */ -8px -8px 16px rgba(255, 255, 255, 0.5);
+}
+
+.boton--gris {
+  /* Efecto neumórfico base (nm-flat-gray-100) */
+  background: #f3f4f6; /* gray-100 */
+  box-shadow: 
+    8px 8px 16px rgba(209, 213, 219, 0.2), /* gray-300 con 20% opacidad */
+    -8px -8px 16px rgba(255, 255, 255, 0.7); /* blanco con 70% opacidad */
+
+  /* Transición suave */
+  transition: all 0.3s ease;
+}
+
+.boton--gris:hover {
+  /* hover:bg-gray-200 */
+  background: #e5e7eb; /* gray-200 */
+
+  /* Ajuste de sombras para mantener el efecto neumórfico */
+  box-shadow: 
+    8px 8px 16px rgba(156, 163, 175, 0.2), /* gray-400 */
+    -8px -8px 16px rgba(249, 250, 251, 0.7); /* gray-50 */
+}
+
+.cuerpo { /* documento index.html */
+  background-color: #f3f4f6; /* gris claro, equivalente a gray-100 */
+  box-shadow: 6px 6px 12px rgba(209, 213, 219, 0.5),
+              -6px -6px 12px rgba(255, 255, 255, 0.8);
+  min-height: 100vh; /* Altura mínima igual a la pantalla */
+}
+
+
+

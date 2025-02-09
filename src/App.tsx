@@ -2,7 +2,8 @@ import './App.css';
 import Encabezamiento from './componentes/compartidos/Encabezamiento';
 import Pie from './componentes/compartidos/Pie';
 import Principal from './componentes/compartidos/Principal';
-import Meta from './componentes/lista/Meta';
+import Lista from './componentes/lista/Lista';
+
 
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
       <div className="App">
        <Encabezamiento></Encabezamiento>
        <Principal>
-        <Meta></Meta>
+        <Lista></Lista>
        </Principal>
        <Pie></Pie>
       </div>
