@@ -1,9 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./Detalles.module.css";
 import { Contexto } from "../servicios/Memoria";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Detalles() {
+
+    const { id } = useParams();
+    
 
     const [form, setForm] = useState({
         detalles: "",
@@ -20,19 +23,38 @@ function Detalles() {
     const { detalles, eventos, periodo, icono, meta, plazo, completado } = form;
 
     const onChange = (event, prop) => {
-        setForm((estado) => ({ ...estado, [prop]: event.target.value }));
+        setForm(estado => ({ ...estado, [prop]: event.target.value }));
       };
-
-    useEffect(() => {
-       //console.log(form);
-    }, [form])
 
     const navegar = useNavigate();
 
-    const crear = async () => {
-        //console.log(form);
+    useEffect(() => {
+       const metaMemoria = estado.objetos[id];
+       if (!id) return;
+       if (!metaMemoria) {
+           return navegar('/404');
+       }
+       setForm(metaMemoria);
+    }, [estado.objetos, id, navegar]);
+
+
+    const crear = () => {
         enviar({ tipo: 'crear', meta: form });
         navegar('/lista');
+    }
+
+    const actualizar = () => {
+        enviar({ tipo: 'actualizar', meta: form });
+        navegar('/lista');
+    }
+
+    const borrar = () => {
+        enviar({ tipo: 'borrar', id });
+        navegar('/lista');
+    }
+
+    const cancelar = () => {
+        navegar('/lista')
     }
 
     const Frecuencias = ["día", "semana", "mes", "año"];
@@ -115,8 +137,29 @@ function Detalles() {
                 </label>
             </form>
             <div className={styles.botones}>
-                <button className="boton boton--negro" onClick={crear}>Crear</button>
-                <button className="boton boton--gris">Cancelar</button>
+                {!id && <button 
+                    className="boton boton--negro" 
+                    onClick={crear}
+                >Crear
+                </button>}
+
+                {id && <button 
+                    className="boton boton--negro" 
+                    onClick={actualizar}
+                >Actualizar
+                </button>}
+
+                {id && <button 
+                    className="boton boton--rojo" 
+                    onClick={borrar}
+                >Borrar
+                </button>}
+
+                <button 
+                    className="boton boton--gris"
+                    onClick={cancelar}
+                >Cancelar
+                </button>
             </div>
         </div>
     );

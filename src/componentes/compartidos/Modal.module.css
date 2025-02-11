@@ -9,3 +9,8 @@
   background-color: #f0f0f0; /* bg-gray-500 */
   opacity: 0.75; /* bg-opacity-75 */
 }
+
+.fixed2 {
+  margin-left: auto;
+  margin-right: auto;
+}

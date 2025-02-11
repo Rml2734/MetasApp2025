@@ -12,7 +12,11 @@ function App() {
       <Route path="/" element={<Layout />} >
         <Route index element={<Lista />} />
         <Route path="/lista" element={<Lista />} >
-          <Route path="/lista/:id" element={<Modal />} />
+          <Route path="/lista/:id" element={
+            <Modal>
+               <Detalles />
+            </Modal> 
+            } />
         </Route>
         <Route path="/nueva" element={<Detalles />} />
       </Route>
