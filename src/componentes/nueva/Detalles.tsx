@@ -28,14 +28,15 @@ function Detalles() {
 
     const navegar = useNavigate();
 
+    const metaMemoria = estado.objetos[id];
+
     useEffect(() => {
-       const metaMemoria = estado.objetos[id];
        if (!id) return;
        if (!metaMemoria) {
            return navegar('/404');
        }
        setForm(metaMemoria);
-    }, [estado.objetos, id, navegar]);
+    }, [id, metaMemoria, navegar]);
 
 
     const crear = () => {
