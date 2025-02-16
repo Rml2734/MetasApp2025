@@ -1,7 +1,12 @@
-import styles from "./Modal.module.css"
+import React from 'react';
+import styles from './Modal.module.css';
+
+interface ModalProps {
+    children: React.ReactNode;
+  }
 
 
-function Modal({ children }) {
+function Modal({ children }: ModalProps) {
     return (
         <div className={styles.fixed}>
             <div className={styles.fixed2}>

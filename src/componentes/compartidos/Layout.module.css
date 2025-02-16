@@ -1,0 +1,14 @@
+:root {
+    --altura-principal: 64px; /* 64px Define aquí el valor que desees */
+  }
+
+.main {
+  height: calc(100vh - var(--altura-principal));
+  display: flex;
+}
+
+.section {
+  width: 100%; /* w-full */
+  height: 100%; /* h-full */
+  overflow-y: auto; /* overflow-y-auto */
+}

@@ -5,7 +5,9 @@ import svgr from "vite-plugin-svgr";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      include: "**/*.{js,jsx,ts,tsx}", // Incluye archivos .js que contienen JSX
+    }),
     svgr({
       // svgr options: https://react-svgr.com/docs/options/
       svgrOptions: {

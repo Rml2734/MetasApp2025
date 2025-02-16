@@ -1,13 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./Detalles.module.css";
-import { Contexto } from "../servicios/Memoria";
 import { useNavigate, useParams } from "react-router-dom";
+import { actualizarMeta, borrarMeta, crearMeta } from "../../../servicios/Metas";
+import { ContextoMetas } from "../../../memoria/ContextoMetas";
 
 function Detalles() {
-
     const { id } = useParams();
     
-
     const [form, setForm] = useState({
         detalles: "",
         eventos: 1,
@@ -18,14 +17,13 @@ function Detalles() {
         completado: 0,
       });
 
-    const [estado, enviar] = useContext(Contexto);
+    const [estado, enviar] = useContext(ContextoMetas);
 
     const { detalles, eventos, periodo, icono, meta, plazo, completado } = form;
 
     const onChange = (event, prop) => {
-        setForm(estado => ({ ...estado, [prop]: event.target.value }));
+        setForm((estado) => ({ ...estado, [prop]: event.target.value }));
       };
-
     const navegar = useNavigate();
 
     const metaMemoria = estado.objetos[id];
@@ -39,22 +37,26 @@ function Detalles() {
     }, [id, metaMemoria, navegar]);
 
 
-    const crear = () => {
-        enviar({ tipo: 'crear', meta: form });
+    const enCrear = async () => {
+        const nuevaMeta = await crearMeta();
+        enviar({ tipo: 'crear', meta: nuevaMeta });
         navegar('/lista');
     }
 
-    const actualizar = () => {
-        enviar({ tipo: 'actualizar', meta: form });
+    const enActualizar = async () => {
+        const metaActualizada = await actualizarMeta();
+        enviar({ tipo: 'actualizar', meta: metaActualizada });
         navegar('/lista');
     }
 
-    const borrar = () => {
-        enviar({ tipo: 'borrar', id });
-        navegar('/lista');
-    }
-
-    const cancelar = () => {
+    const enBorrar = async () => {
+        if (!id) return;
+        await borrarMeta(Number(id));  // Asegúrate de que borrarMeta reciba el tipo adecuado (número o string)
+        enviar({ tipo: "borrar", id });
+        regresar();
+    };
+    
+    const regresar = () => {
         navegar('/lista')
     }
 
@@ -74,7 +76,7 @@ function Detalles() {
                     />
                 </label>
                 <label className="label">
-                    ¿Con que frecuencia deseas cumplir tu meta?
+                    ¿Con que seguimiento deseas cumplir tu meta?
                     <span>(ej. 1 vez a la semana)</span>
                     <div className={styles.semana}>
                         <input
@@ -140,25 +142,25 @@ function Detalles() {
             <div className={styles.botones}>
                 {!id && <button 
                     className="boton boton--negro" 
-                    onClick={crear}
+                    onClick={enCrear}
                 >Crear
                 </button>}
 
                 {id && <button 
                     className="boton boton--negro" 
-                    onClick={actualizar}
+                    onClick={enActualizar}
                 >Actualizar
                 </button>}
 
                 {id && <button 
                     className="boton boton--rojo" 
-                    onClick={borrar}
+                    onClick={enBorrar}
                 >Borrar
                 </button>}
 
                 <button 
                     className="boton boton--gris"
-                    onClick={cancelar}
+                    onClick={regresar}
                 >Cancelar
                 </button>
             </div>

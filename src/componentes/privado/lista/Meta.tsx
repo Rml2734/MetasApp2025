@@ -1,15 +1,10 @@
+
+import { MetaTipo } from "../../../tipos/MetaTipo";
 import styles from "./Meta.module.css";
 import { Link } from "react-router-dom";
 
-interface MetaProps {
-    id: string;
-    icono: string;
-    eventos: number;
-    periodo: string;
-    detalles: string;
-    meta: number;
-    completado: number;
-  }
+
+type MetaProps = MetaTipo
 
 function Meta({ id, icono, eventos, periodo, detalles, meta, completado }: MetaProps) {
     

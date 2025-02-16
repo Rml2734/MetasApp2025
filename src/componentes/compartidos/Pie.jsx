@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./Pie.module.css";
 
 function Pie() {

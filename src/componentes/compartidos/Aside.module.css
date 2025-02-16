@@ -1,0 +1,9 @@
+.aside {
+  display: flex; /* flex */
+  flex-direction: column; /* flex-col */
+  color: #4a5568; /* text-gray-700 */
+  background-color: #f0f0f0; /* bg-gray-100 */
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06); /* shadow */
+  width: 15rem; /* w-60  (60 * 4px = 240px = 15rem) */
+  height: 100%; /* h-full */
+}
