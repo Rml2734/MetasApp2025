@@ -8,7 +8,7 @@ import { ContextoAuth } from "../../../memoria/ContextoAuth";
 function Registro() {
 
   const navegar = useNavigate();
-
+  
   const [auth, enviarAuth] = useContext(ContextoAuth);
   const enviar = async (form) => {
     const token = await registrarse(form);

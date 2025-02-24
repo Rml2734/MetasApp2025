@@ -6,8 +6,7 @@
   right: 0; /* inset-0 */
   bottom: 0; /* inset-0 */
   left: 0; /* inset-0 */
-  background-color: #f0f0f0; /* bg-gray-500 */
-  opacity: 0.75; /* bg-opacity-75 */
+  background-color: rgba(31, 41, 55, 0.75); /* equivale a bg-gray-500 bg-opacity-75 */
 }
 
 .fixed2 {

@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext, useEffect, useState } from "react";
 import styles from "./Detalles.module.css";
 import { useNavigate, useParams } from "react-router-dom";
@@ -38,23 +39,23 @@ function Detalles() {
 
 
     const enCrear = async () => {
-        const nuevaMeta = await crearMeta();
+        const nuevaMeta = await crearMeta(form);
         enviar({ tipo: 'crear', meta: nuevaMeta });
         navegar('/lista');
     }
 
     const enActualizar = async () => {
-        const metaActualizada = await actualizarMeta();
+        const metaActualizada = await actualizarMeta(form);
         enviar({ tipo: 'actualizar', meta: metaActualizada });
         navegar('/lista');
     }
 
     const enBorrar = async () => {
-        if (!id) return;
-        await borrarMeta(Number(id));  // Asegúrate de que borrarMeta reciba el tipo adecuado (número o string)
-        enviar({ tipo: "borrar", id });
+        const id = form.id;
+        await borrarMeta(id);
+        enviar({ tipo: 'borrar', id });
         regresar();
-    };
+      };
     
     const regresar = () => {
         navegar('/lista')
@@ -139,7 +140,7 @@ function Detalles() {
                     </select>
                 </label>
             </form>
-            <div className={styles.botones}>
+            <div className="botones">
                 {!id && <button 
                     className="boton boton--negro" 
                     onClick={enCrear}

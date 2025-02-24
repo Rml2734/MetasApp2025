@@ -20,4 +20,14 @@ export default defineConfig({
       include: "**/*.svg",
     }),
   ],
+  // Agregar la configuración del servidor con proxy
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000', // Ajusta este puerto al de tu backend
+        changeOrigin: true,
+        secure: false
+      }
+    }
+  }
 });

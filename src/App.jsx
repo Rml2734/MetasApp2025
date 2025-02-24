@@ -1,3 +1,4 @@
+import React from "react";
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Layout from './componentes/compartidos/Layout';
@@ -18,7 +19,7 @@ function App() {
   useEffect(() => {
     async function fetchData() { 
     const metas = await pedirMetas();
-    enviar({ tipo:'colocar',metas })   
+    enviar({ tipo:'colocar', metas });   
     }
     fetchData();
     },[enviar]);
@@ -39,7 +40,6 @@ function App() {
       {/* Rutas privadas - requieren autenticación */}
       <Route element={<Layout privado />}>
         <Route element={<Autenticar />} >
-          
           <Route path='/lista' element={<Lista />} >
             <Route 
               path='/lista/:id' 
@@ -47,7 +47,8 @@ function App() {
               <Modal>
                 <Detalles />
               </Modal> 
-            } />
+             } 
+            />
           </Route>
           <Route path='/nueva' element={<Detalles />} />
         </Route>

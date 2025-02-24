@@ -17,6 +17,7 @@ export async function registrarse(credenciales: CredencialesTipo): Promise<Token
   return token;
 };
 
+
 export async function acceder(credenciales: CredencialesTipo): Promise<Token> {
   const response = await fetch(`/api/login`, {
     method: "POST",
@@ -28,4 +29,4 @@ export async function acceder(credenciales: CredencialesTipo): Promise<Token> {
   if (response.status !== 200) throw new Error(); 
   const token: Token = await response.json();
   return token;
-};
+}

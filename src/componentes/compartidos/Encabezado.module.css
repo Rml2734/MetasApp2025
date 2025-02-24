@@ -1,30 +1,32 @@
 .encabezado {
-  height: 48px; /* Altura equivalente a h-xl */
-  display: flex;
-  justify-content: space-between;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* shadow */
-  background-color: #fef3c7; /* bg-amber-100 */
-  color: #374151; /* text-gray-700 */
-  position: relative;
+  /* Ajusta este valor si "h-xl" tiene otro significado en tu proyecto */
+  height: 48px;           /* h-xl: altura extra grande (ejemplo) */
+  display: flex;           /* flex: establece display flex */
+  justify-content: space-between; /* justify-between: distribuye los hijos con espacio entre ellos */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 
+              0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow: sombra ligera */
+  background-color: #ffffff; /* bg-white: fondo blanco */
+  color: #4a5568;          /* text-gray-700: color de texto gris */
+  position: relative;      /* relative: posición relativa */
 }
 
 .contenedor {
   display: flex;
   align-items: center;
-  padding-left: 16px; /* pl-4 */
+  padding-left: 1rem; /*16px pl-4 */
 }
 
 .logo {
-  margin-right: 8px; /* mr-2 */
-  height: 40px; /* h-10 */
-  width: 40px; /* w-10 */
+  margin-right: 0.5rem; /* equivale a mr-2 */
+  height: 2.5rem;      /* equivale a h-10 */
+  width: 2.5rem;       /* equivale a w-10 */
 }
 
 .titulo {
   font-size: 1.125rem; /* Equivalente a text-lg */
   line-height: 1.75rem; /* Line-height por defecto de text-lg */
   font-weight: 600; /* Equivalente a font-semibold */
-  color: #111827; /* Equivalente a text-gray-900 */
+  color: #1a202c;           /* equivale a text-gray-900 */
   text-transform: uppercase; /* Equivalente a uppercase */
   text-decoration: none; /* Esto quita el subrayado */
 }

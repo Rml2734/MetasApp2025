@@ -1,4 +1,4 @@
-
+import React from "react";
 import { MetaTipo } from "../../../tipos/MetaTipo";
 import styles from "./Meta.module.css";
 import { Link } from "react-router-dom";
@@ -12,7 +12,8 @@ function Meta({ id, icono, eventos, periodo, detalles, meta, completado }: MetaP
         <Link to={`/lista/${id}`} className={`${styles.meta} tarjeta`} >
             <div className={styles.correr}>
                 <div className={styles.icono}>{icono}</div>
-                <p className={styles.frecuencia}>{eventos}
+                <p className={styles.frecuencia}>
+                    {eventos}
                     <sub className={styles.sub}>/ {periodo}</sub></p>
                 <p>{detalles}</p>
             </div>

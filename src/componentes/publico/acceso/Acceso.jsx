@@ -9,7 +9,6 @@ function Acceso() {
 
   const navegar = useNavigate();
 
-
   const [auth, enviarAuth] = useContext(ContextoAuth);
   const enviar = async (form) => {
     const token = await acceder(form);
@@ -19,8 +18,8 @@ function Acceso() {
 
   return <Credenciales
     enviar={enviar}
-    titulo="Registro"
-    boton="Registrarme"
+    titulo="Acceso"
+    boton="Acceder"
   ></Credenciales>
 
 }

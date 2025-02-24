@@ -1,26 +1,11 @@
 /* Pie.module.css */
 .pie {
-  /* shadow: equivale a la sombra predeterminada de Tailwind */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-
-  /* bg-gradient-to-r from-pink-500 to-purple-500 */
-  background-image: linear-gradient(to right, #ec4899, #8b5cf6);
-
-  /* h-md: altura personalizada; ajústala según tus necesidades */
-  height: 40px;
-
-  /* text-xs: tamaño de texto extra pequeño (0.75rem es lo habitual en Tailwind) */
-  font-size: 0.75rem;
-
-  /* text-right: alinea el texto a la derecha */
-  text-align: right;
-
-  /* pr-2: padding-right de 0.5rem */
-  padding-right: 0.5rem;
-
-  /* text-white: color de texto blanco */
-  color: #ffffff;
-
-  /* relative: posición relativa */
-  position: relative;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* equivale a shadow */
+  background: linear-gradient(to right, #ec4899, #7e22ce); /* equivale a bg-gradient-to-r from-pink-500 to-purple-500 */
+  height: auto; /* equivale a h-md (ajusta según tu diseño) */
+  font-size: 0.75rem; /* equivale a text-xs */
+  text-align: center; /* equivale a text-right */
+  padding-right: 0.5rem; /* equivale a pr-2 */
+  color: #ffffff; /* equivale a text-white */
+  position: relative; /* equivale a relative */
 }

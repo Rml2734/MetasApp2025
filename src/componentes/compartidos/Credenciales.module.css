@@ -7,7 +7,11 @@
 }
 
 .head {
-  font-size: 1.125rem; /* text-lg */
-  margin: 0.75rem; /* m-3 */
-  text-transform: uppercase; /* uppercase */
+  font-size: 1.125rem;        /* equivale a text-lg */
+  margin: 0.75rem;            /* equivale a m-3 */
+  text-transform: uppercase;  /* equivale a uppercase */
+}
+
+.relleno {
+  padding: 1rem;
 }

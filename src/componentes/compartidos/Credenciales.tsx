@@ -30,7 +30,7 @@ function Credenciales({ enviar, titulo, boton }: CredencialesProps) {
   return (
     <div className={'tarjeta ' + estilos.auth}>
       <h1 className={estilos.head}>{titulo}</h1>
-      <form className="p-4">
+      <form className={estilos.relleno}>
         <label className="label">
           usuario
           <input

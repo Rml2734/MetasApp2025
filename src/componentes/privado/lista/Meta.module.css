@@ -1,54 +1,33 @@
 .meta {
-  display: flex;
-  
-  /* Espaciado interno */
-  padding: 0.5rem; /* p-2 (Tailwind usa 1 unidad = 0.25rem, 2 unidades = 0.5rem) */
-
-  /* Alineación horizontal */
-  justify-content: space-between; /* justify-between */
-  align-items: center; /* Nueva línea para alineación vertical general */
+  display: flex;           /* equivale a flex */
+  padding: 0.5rem;         /* equivale a p-2 */
+  justify-content: space-between; /* equivale a justify-between */
   
 }
 
 .icono {
-  /* h-10: 2.5rem (40px, si 1rem = 16px) */
-  height: 2.5rem;
-
-  /* w-10: 2.5rem (40px) */
-  width: 2.5rem;
-
-  /* nm-inset-gray-100: efecto neumórfico de inserción con un fondo gris claro */
-  /* Nota: este valor puede variar según la configuración de neumorfismo en Tailwind; aquí se usa un ejemplo */
-  background-color: #f3f4f6;
-  box-shadow: inset 4px 4px 6px rgba(0, 0, 0, 0.1),
-    inset -4px -4px 6px rgba(255, 255, 255, 0.7);
-
-  /* rounded-full: bordes completamente redondeados */
-  border-radius: 9999px;
-
-  /* flex, items-center y justify-center: centra el contenido */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* text-xl: tamaño de fuente de 1.25rem (20px) */
-  font-size: 1.25rem;
+  height: 2.5rem; /* h-10 */
+  width: 2.5rem; /* w-10 */
+  box-shadow: inset 0 0 0 0.25rem #f0f0f0; /* nm-inset-gray-100 */
+  border-radius: 9999px; /* rounded-full */
+  display: flex; /* flex */
+  align-items: center; /* items-center */
+  justify-content: center; /* justify-center */
+  font-size: 1.25rem; /* text-xl */
+  
 }
 
 .frecuencia {
-  /* Tamaño de texto (text-xl) */
-  font-size: 1.25rem; /* 20px en pantallas estándar */
-  line-height: 1.75rem; /* 28px - valor por defecto de Tailwind para text-xl */
-
-  /* Márgenes (ml-5 = margin-left: 1.25rem, mr-10 = margin-right: 2.5rem) */
-  margin-left: 1.25rem; /* 5 × 0.25rem = 1.25rem */
-  margin-right: 2.5rem; /* 10 × 0.25rem = 2.5rem */
+  font-size: 1.25rem;      /* equivale a text-xl */
+  margin-left: 1.25rem;    /* equivale a ml-5 */
+  margin-right: 2.5rem;    /* equivale a mr-10 */
+  
 }
 
 .correr {
-  display: flex;
-  align-items: center;
-  gap: 1rem; /* Añadir esto y eliminar márgenes individuales */
+  display: flex;          /* equivale a flex */
+  align-items: center;    /* equivale a items-center */
+  
 }
 
 .completo {
@@ -60,65 +39,36 @@
 }
 
 .sub {
-  /* text-xs */
-  font-size: 0.75rem; /* 12px (base 16px) */
-  line-height: 1rem; /* 16px - valor por defecto de Tailwind para text-xs */
-
-  /* text-gray-500 */
-  color: #6b7280; /* Color hexadecimal de Tailwind para gray-500 */
-
-  /* ml-1 */
-  margin-left: 0.25rem; /* 1 × 0.25rem = 0.25rem (4px) */
+  font-size: 0.75rem;      /* equivale a text-xs */
+  color: #6b7280;          /* equivale a text-gray-500 */
+  margin-left: 0.25rem;    /* equivale a ml-1 */
+  
 }
 
 .incio {
-  /* relative */
-  position: relative;
-
-  /* m-2 */
-  margin: 0.5rem; /* 2 × 0.25rem = 0.5rem */
-
-  /* mx-5 */
-  margin-left: 1.25rem; /* 5 × 0.25rem = 1.25rem */
-  margin-right: 1.25rem;
+  position: relative;      /* equivale a relative */
+  margin: 0.5rem;          /* equivale a m-2 (margen en todos los lados) */
+  margin-left: 1.25rem;    /* equivale a mx-5 (margen izquierdo y derecho) */
+  margin-right: 1.25rem;   /* equivale a mx-5 */
+  
 }
 
 .completa {
-   /* text-center de Tailwind */
-   text-align: center;
+  text-align: center;  /* equivale a text-center */
+  
 }
 
 .barra1 {
-   /* nm-convex-gray-100 (neumorfismo convexo) */
-   background: #f3f4f6; /* gray-100 */
-   box-shadow: 
-     6px 6px 12px rgba(209, 213, 219, 0.5), /* Sombra exterior gris */
-     -6px -6px 12px rgba(255, 255, 255, 0.8); /* Sombra interior clara */
- 
-   /* h-1 */
-   height: 0.25rem; /* 1 × 0.25rem = 0.25rem */
- 
-   /* w-28 */
-   width: 7rem; /* 28 × 0.25rem = 7rem */
- 
-   /* rounded */
-   border-radius: 0.25rem;
- 
-   /* bg-blue-200 */
-   background-color: #bfdbfe; /* Color override para el fondo */
+  background: convex 0 0 0 0 rgba(243, 244, 246, 1); /* equivale a nm-convex-gray-100 (ajusta si es necesario) */
+  height: 0.25rem;         /* equivale a h-1 */
+  width: 7rem;            /* equivale a w-28 */
+  border-radius: 0.375rem; /* equivale a rounded */
+  background-color: #bfdbfe; /* equivale a bg-blue-200 */
 }
 
 .barra2 {
-   /* h-1 */
-  height: 0.25rem; /* 1 × 0.25rem (Tailwind: 1 unidad = 0.25rem) */
-  
-  /* rounded */
-  border-radius: 0.25rem; /* Equivalente a 4px */
-  
-  /* bg-gradient-to-l from-green-200 to-blue-500 */
-  background-image: linear-gradient(
-    to left,
-    #bbf7d0,  /* from-green-200 */
-    #3b82f6   /* to-blue-500 */
-  );
+  height: 0.25rem;                     /* equivale a h-1 */
+  border-radius: 0.375rem;              /* equivale a rounded */
+  background: linear-gradient(to left, #bbf7d0, #3b82f6); /* equivale a bg-gradient-to-l from-green-200 to-blue-500 */
 }
+

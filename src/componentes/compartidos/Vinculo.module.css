@@ -1,25 +1,25 @@
 .icono {
-    height: 24px; /* h-6 */
-    width: 24px; /* w-6 */
-  }
+  height: 1.5rem; /* equivale a h-6 */
+  width: 1.5rem; /* equivale a w-6 */
+}
 
 .vinculo {
-  display: flex;               /* flex */
-  align-items: center;         /* items-center */
-  padding-left: 1rem;          /* px-4 (1rem a la izquierda) */
-  padding-right: 1rem;         /* px-4 (1rem a la derecha) */
-  height: 48px;                /* h-xl: ajusta el valor según tu configuración */
+  display: flex; /* flex */
+  align-items: center; /* items-center */
+  padding-left: 1rem; /* px-4 (1rem a la izquierda) */
+  padding-right: 1rem; /* px-4 (1rem a la derecha) */
+  height: 48px; /* h-xl: ajusta el valor según tu configuración */
   transition: background-color 0.3s ease; /* Transición para el hover (opcional) */
   text-decoration: none; /* Esto quita el subrayado */
 }
 
 .vinculo:hover {
-    background-color: #E5E7EB;   /* hover:bg-gray-200: color de fondo en hover */
+  background-color: #edf2f7; /* equivale a hover:bg-gray-200 */
 }
 
 .texto {
-    margin-left: 0.5rem; /* ml-2 -> 8px (0.5rem) */
+  margin-left: 0.5rem; /* ml-2 -> 8px (0.5rem) */
   font-size: 0.875rem; /* text-sm -> 14px (0.875rem) */
   font-weight: 600; /* font-semibold */
-  color: #111827; /* text-gray-900 -> gris oscuro */
+  color: #1a202c; /* equivale a text-gray-900 */
 }

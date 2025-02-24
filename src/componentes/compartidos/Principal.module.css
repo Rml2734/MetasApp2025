@@ -8,20 +8,13 @@
 }
 
 .aside {
-  /* flex */
-  display: flex;
-  /* flex-col */
-  flex-direction: column;
-  /* text-gray-700 (valor por defecto de Tailwind: #374151) */
-  color: #374151;
-  /* bg-gray-100 (valor por defecto de Tailwind: #f3f4f6) */
-  background-color: #f3f4f6;
-  /* shadow (sombra predeterminada de Tailwind) */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-  /* w-60 (Tailwind: 15rem) */
-  width: 15rem;
-  /* h-full */
-  height: 100%;
+  display: flex;            /* equivale a flex */
+  flex-direction: column;   /* equivale a flex-col */
+  color: #4a5568;           /* equivale a text-gray-700 */
+  background-color: #f7fafc; /* equivale a bg-gray-100 */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* equivale a shadow */
+  width: 15rem;             /* equivale a w-60 (60/4 = 15rem) */
+  height: 100%;             /* equivale a h-full */
 }
 
 .main {
