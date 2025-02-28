@@ -52,6 +52,6 @@
     "util": "^0.12.5",
     "vite": "^6.0.5",
     "vite-plugin-svgr": "^4.3.0"
-  },
-  "proxy": "http://localhost:4000"
+  }
+  
 }

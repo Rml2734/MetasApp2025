@@ -51,10 +51,10 @@ function Detalles() {
     }
 
     const enBorrar = async () => {
-        const id = form.id;
-        await borrarMeta(id);
-        enviar({ tipo: 'borrar', id });
-        regresar();
+        //const id = form.id;
+        await borrarMeta(form.id);
+        enviar({ tipo: 'borrar', id: form.id });
+        navegar('/lista');
       };
     
     const regresar = () => {
