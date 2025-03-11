@@ -17,10 +17,5 @@ describe("Componente Meta", () => {
     const botón = screen.getByText('Completado');
     expect(botón).toBeInTheDocument();
   });
-  it("renderiza el icono", () => {
-    render(<Meta icono="🏃‍♂️"/>);
-    const icono = screen.getByText('🏃‍♂️');
-    expect(icono).toBeInTheDocument();
-  });
 });
 

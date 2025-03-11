@@ -1,8 +1,8 @@
 import { MetaTipo } from "../tipos/MetaTipo";
 
 export async function pedirMetas(): Promise<MetaTipo[]> {
-  // const response = await fetch('/metas.json');
-  const response = await fetch("/api/metas");
+   const response = await fetch('/metas.json');
+  //const response = await fetch("/api/metas");
   const metas: MetaTipo[] = await response.json();
   return metas;
 }

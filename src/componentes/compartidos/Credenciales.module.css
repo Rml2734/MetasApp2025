@@ -15,3 +15,29 @@
 .relleno {
   padding: 1rem;
 }
+
+/* Estilos para "¿Has olvidado tu contraseña?" */
+.olvidoClave {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.olvidoClave a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.olvidoClave a:hover {
+  text-decoration: underline;
+}
+
+/* 📱 Estilos Responsivos */
+@media (max-width: 600px) {
+  .auth {
+    width: 95%;
+    top: auto;
+    transform: none;
+    margin-top: 20px;
+  }
+}

@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import estilos from "./Credenciales.module.css";
+import { Link } from "react-router-dom"; // Importamos Link si usas React Router
 
 interface CredencialesProps {
   enviar: Function;
@@ -49,6 +50,12 @@ function Credenciales({ enviar, titulo, boton }: CredencialesProps) {
             onChange={(e) => onChange(e, "clave")}
           />
         </label>
+
+         {/* Nuevo enlace para "¿Has olvidado tu contraseña?" */}
+         <div className={estilos.olvidoClave}>
+          <Link to="/recuperar-clave">¿Has olvidado tu contraseña?</Link>
+        </div>
+
       </form>
       <div className="botones">
         <button className="boton boton--negro" onClick={(e) => enAcceder(e)}>

@@ -6,7 +6,7 @@ import styles from './Layout.module.css';
 import Aside from './Aside';
 
 
-function Layout({ privado }) {
+function Layout({privado = false}) {  // Valor por defecto si no se pasa "privado"
     return (
         <>   
             <Encabezamiento></Encabezamiento>

@@ -32,7 +32,7 @@ function Detalles() {
     useEffect(() => {
        if (!id) return;
        if (!metaMemoria) {
-           return navegar('/404');
+           return navegar('/lista');
        }
        setForm(metaMemoria);
     }, [id, metaMemoria, navegar]);

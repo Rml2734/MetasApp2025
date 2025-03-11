@@ -1,0 +1,45 @@
+.conte {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .conte h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .conte form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .conte input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .conte button {
+    padding: 10px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .conte button:hover {
+    background: #0056b3;
+  }
+  
+  .conte p {
+    margin-top: 15px;
+    color: green;
+  }
+  
