@@ -1,74 +1,139 @@
+.meta-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra en pantallas pequeñas */
+  width: 100%;
+  padding: 1rem;
+}
+
 .meta {
-  display: flex;           /* equivale a flex */
-  padding: 0.5rem;         /* equivale a p-2 */
-  justify-content: space-between; /* equivale a justify-between */
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem; /* Mayor padding para que no se vea apretado */
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 95%; /* Se expanden en pantallas grandes sin quedar pegadas */
+  margin-bottom: 1rem; /* Espaciado entre metas */
 }
 
 .icono {
-  height: 2.5rem; /* h-10 */
-  width: 2.5rem; /* w-10 */
-  box-shadow: inset 0 0 0 0.25rem #f0f0f0; /* nm-inset-gray-100 */
-  border-radius: 9999px; /* rounded-full */
-  display: flex; /* flex */
-  align-items: center; /* items-center */
-  justify-content: center; /* justify-center */
-  font-size: 1.25rem; /* text-xl */
-  
+  height: 2.5rem;
+  width: 2.5rem;
+  box-shadow: inset 0 0 0 0.25rem #f0f0f0;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
 }
 
 .frecuencia {
-  font-size: 1.25rem;      /* equivale a text-xl */
-  margin-left: 1.25rem;    /* equivale a ml-5 */
-  margin-right: 2.5rem;    /* equivale a mr-10 */
-  
+  font-size: 1.25rem;
+  margin: 0 1rem;
 }
 
 .correr {
-  display: flex;          /* equivale a flex */
-  align-items: center;    /* equivale a items-center */
-  
+  display: flex;
+  align-items: center;
 }
 
 .completo {
   display: flex;
-  align-items: center; /* Añadir esta línea */
-  gap: 1rem; /* Espaciado entre elementos */
-  
-  
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .sub {
-  font-size: 0.75rem;      /* equivale a text-xs */
-  color: #6b7280;          /* equivale a text-gray-500 */
-  margin-left: 0.25rem;    /* equivale a ml-1 */
-  
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-left: 0.25rem;
 }
 
 .incio {
-  position: relative;      /* equivale a relative */
-  margin: 0.5rem;          /* equivale a m-2 (margen en todos los lados) */
-  margin-left: 1.25rem;    /* equivale a mx-5 (margen izquierdo y derecho) */
-  margin-right: 1.25rem;   /* equivale a mx-5 */
-  
+  position: relative;
+  margin: 0.5rem 1.25rem;
 }
 
 .completa {
-  text-align: center;  /* equivale a text-center */
-  
+  text-align: center;
 }
 
 .barra1 {
-  background: convex 0 0 0 0 rgba(243, 244, 246, 1); /* equivale a nm-convex-gray-100 (ajusta si es necesario) */
-  height: 0.25rem;         /* equivale a h-1 */
-  width: 7rem;            /* equivale a w-28 */
-  border-radius: 0.375rem; /* equivale a rounded */
-  background-color: #bfdbfe; /* equivale a bg-blue-200 */
+  background: rgba(243, 244, 246, 1);
+  height: 0.75rem; /* Hacemos la barra más gruesa */
+  width: 100%;
+  max-width: 800px; /* Aumenta el ancho máximo */
+  border-radius: 0.375rem;
+  background-color: #bfdbfe;
+  position: relative;
+  overflow: hidden;
 }
 
 .barra2 {
-  height: 0.25rem;                     /* equivale a h-1 */
-  border-radius: 0.375rem;              /* equivale a rounded */
-  background: linear-gradient(to left, #bbf7d0, #3b82f6); /* equivale a bg-gradient-to-l from-green-200 to-blue-500 */
+  height: 100%;
+  border-radius: 0.5rem;
+  background: linear-gradient(to left, #bbf7d0, #3b82f6);
+  mask: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 1) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 1) 75%,
+    transparent 75%,
+    transparent
+  );
+  mask-size: 1rem 1rem;
+  animation: progress-bar-stripes 1s linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
+@keyframes progress-bar-stripes {
+  from {
+    mask-position: 1rem 0;
+  }
+  to {
+    mask-position: 0 0;
+  }
+}
+
+/* Estilos específicos para pantallas grandes */
+@media (min-width: 1024px) {
+  .meta {
+    width: 98%; /* Hace que ocupe más espacio horizontal sin tocar los bordes */
+    max-width: 1400px; /* Asegura un límite máximo */
+  }
+  .barra1 {
+    max-width: 100%; /* La barra ocupa el 100% del ancho disponible */
+  }
+}
+
+/* Estilos específicos para móviles */
+@media (max-width: 600px) {
+  .meta {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+    width: 90%; /* Reducimos el ancho para que tenga márgenes */
+    margin: 0 auto 1rem auto; /* Centra la meta horizontalmente */
+  }
+
+  .frecuencia {
+    margin: 0;
+  }
+
+  .correr {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .completo {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}

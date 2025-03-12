@@ -1,22 +1,35 @@
-import React from "react";
-import { Outlet } from 'react-router-dom';
-import Encabezamiento from './Encabezamiento';
-import Pie from './Pie';
-import styles from './Layout.module.css';
-import Aside from './Aside';
+import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
+import Encabezamiento from "./Encabezamiento";
+import Pie from "./Pie";
+import styles from "./Layout.module.css";
+import Aside from "./Aside";
 
+function Layout({ privado = false }) {
+    const [menuAbierto, setMenuAbierto] = useState(false);
 
-function Layout({privado = false}) {  // Valor por defecto si no se pasa "privado"
+    const toggleMenu = () => {
+        setMenuAbierto(!menuAbierto);
+    };
+
+    const cerrarMenu = () => {
+        setMenuAbierto(false);
+    };
+
     return (
-        <>   
-            <Encabezamiento></Encabezamiento>
+        <>
+            <Encabezamiento toggleMenu={toggleMenu} privado={privado} />
+
             <main className={styles.main}>
-                {privado && <Aside />}
+                {privado && <Aside menuAbierto={menuAbierto} />}
                 <section className={styles.section}>
-                    <Outlet></Outlet>
+                    <Outlet />
                 </section>
             </main>
-            <Pie></Pie>  
+            <Pie />
+
+            {/* Overlay para cerrar el menú al hacer clic fuera */}
+            {menuAbierto && <div className={styles.overlay} onClick={cerrarMenu}></div>}
         </>
     );
 }

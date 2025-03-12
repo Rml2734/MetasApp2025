@@ -7,3 +7,23 @@
   width: 15rem; /* w-60  (60 * 4px = 240px = 15rem) */
   height: 100%; /* h-full */
 }
+
+/* Ocultar aside en móviles */
+@media (max-width: 768px) {
+  .aside {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      height: 100vh;
+      background: white;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transform: translateX(-100%);
+      z-index: 1000;
+  }
+
+  /* Mostrar aside cuando el menú está abierto */
+  .aside.open {
+      transform: translateX(0);
+  }
+}

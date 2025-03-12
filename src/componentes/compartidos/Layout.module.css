@@ -12,3 +12,70 @@
   height: 100%; /* h-full */
   overflow-y: auto; /* overflow-y-auto */
 }
+
+
+
+/* Barra lateral por defecto */
+.aside {
+  width: 250px;
+  height: 100vh;
+  background: #f8f9fa;
+  padding: 1rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Ocultar aside en móviles */
+@media (max-width: 768px) {
+  .aside {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      height: 100vh;
+      background: white;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transform: translateX(-100%);
+      z-index: 1000;
+  }
+
+  /* Mostrar aside cuando el menú está abierto */
+  .aside.open {
+      transform: translateX(0);
+  }
+}
+
+/* Estilo del botón de menú */
+.menuButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 10px;
+  display: none; /* Oculto en escritorio */
+}
+
+/* Mostrar el botón solo en móviles */
+@media (max-width: 768px) {
+  .menuButton {
+      display: block;
+  }
+}
+ 
+/* Fondo oscuro para cerrar el menú */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+  display: none;
+}
+
+/* Mostrar el overlay cuando el menú está abierto */
+@media (max-width: 768px) {
+  .overlay {
+      display: block;
+  }
+}

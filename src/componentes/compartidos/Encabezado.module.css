@@ -30,3 +30,27 @@
   text-transform: uppercase; /* Equivalente a uppercase */
   text-decoration: none; /* Esto quita el subrayado */
 }
+
+/* Boton esconder*/
+.menuButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: 10px;
+  color: #4a5568;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Pequeña animación cuando se presiona */
+.menuButton:active {
+  transform: scale(0.9);
+}
+
+/* Ocultar el botón en pantallas grandes */
+@media (min-width: 769px) {
+  .menuButton {
+      display: none;
+  }
+}

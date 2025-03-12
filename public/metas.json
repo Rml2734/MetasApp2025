@@ -7,7 +7,7 @@
       "icono": "🏃‍♂️",
       "meta": 365,
       "plazo": "2030-01-01",
-      "completado": 5
+      "completado": 255
     },
     {
       "id": "2",
@@ -17,7 +17,7 @@
       "icono": "📚",
       "meta": 12,
       "plazo": "2030-01-01",
-      "completado": 0
+      "completado": 6
     },
     {
       "id": "3",
