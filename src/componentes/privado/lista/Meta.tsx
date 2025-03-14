@@ -20,6 +20,7 @@ function Meta({ id, icono, eventos, periodo, detalles, meta, completado }: MetaP
             <div className={styles.completo}>
                 <div className={styles.inicio}>
                     <p className={styles.completa}>{completado} de {meta}</p>
+                    
                     <div className={styles.barra1}>
                         <div 
                           style={{

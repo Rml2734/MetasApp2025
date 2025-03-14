@@ -1,8 +1,9 @@
 import { MetaTipo } from "../tipos/MetaTipo";
+const token = localStorage.getItem("token"); // 🔥 Obtiene el token del almacenamiento
 
 export async function pedirMetas(): Promise<MetaTipo[]> {
-   const response = await fetch('/metas.json');
-  //const response = await fetch("/api/metas");
+   //const response = await fetch('/metas.json');
+  const response = await fetch("http://localhost:5173/api/metas");
   const metas: MetaTipo[] = await response.json();
   return metas;
 }
@@ -21,6 +22,7 @@ export async function crearMeta(meta: MetaTipo): Promise<MetaTipo> {
     body: JSON.stringify(meta),
     headers: {
       "content-type": "application/json; charset=UTF-8",
+      "Authorization": `Bearer ${token}`, // 🔥 Agrega esta línea
     },
   });
   const metaCreada: MetaTipo = await response.json();
@@ -35,6 +37,7 @@ export async function actualizarMeta(meta: MetaTipo): Promise<MetaTipo> {
     body: JSON.stringify(meta),
     headers: {
       "content-type": "application/json; charset=UTF-8",
+      "Authorization": `Bearer ${token}`, // 🔥 Agrega esta línea
     },
   });
   const metaActualizada: MetaTipo = await response.json();
@@ -43,9 +46,13 @@ export async function actualizarMeta(meta: MetaTipo): Promise<MetaTipo> {
 }
 
 export async function borrarMeta(id: number): Promise<void> {
+  
   // const response = await fetch('/meta.json');
   await fetch(`/api/metas/${id}`, {
     method: "DELETE",
+    headers: {
+      "Authorization": `Bearer ${token}`, // 🔥 Agrega esta línea
+    }
   });
   console.log("Meta borrada!", id);
 }
