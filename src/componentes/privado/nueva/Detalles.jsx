@@ -6,8 +6,9 @@ import { actualizarMeta, borrarMeta, crearMeta } from "../../../servicios/Metas"
 import { ContextoMetas } from "../../../memoria/ContextoMetas";
 
 function Detalles() {
-    const { id } = useParams();
+    const { id } = useParams(); // ID será `undefined` en creación
     
+    // Estado del formulario
     const [form, setForm] = useState({
         detalles: "",
         eventos: 1,
@@ -18,10 +19,11 @@ function Detalles() {
         completado: 0,
       });
 
-    const [estado, enviar] = useContext(ContextoMetas);
+    const [estado, enviar] = useContext(ContextoMetas); // Obtener estado global
 
     const { detalles, eventos, periodo, icono, meta, plazo, completado } = form;
 
+    // 🛑 Manejar cambios en los inputs (incluyendo conversión de tipos)
     const onChange = (event, prop) => {
         setForm((estado) => ({ ...estado, [prop]: event.target.value }));
       };
@@ -29,6 +31,7 @@ function Detalles() {
 
     const metaMemoria = estado.objetos[id];
 
+     // 🔄 Inicializar el formulario al cargar el componente
     useEffect(() => {
        if (!id) return;
        if (!metaMemoria) {
@@ -38,18 +41,22 @@ function Detalles() {
     }, [id, metaMemoria, navegar]);
 
 
+    // 🚀 Crear nueva meta
     const enCrear = async () => {
         const nuevaMeta = await crearMeta(form);
         enviar({ tipo: 'crear', meta: nuevaMeta });
         navegar('/lista');
     }
 
+    // 🔄 Actualizar meta existente
     const enActualizar = async () => {
+        if (!form.id) return; // 👈 Asegúrate de que exista form.id
         const metaActualizada = await actualizarMeta(form);
         enviar({ tipo: 'actualizar', meta: metaActualizada });
         navegar('/lista');
-    }
+    } 
 
+    // 🗑️ Borrar meta
     const enBorrar = async () => {
         //const id = form.id;
         await borrarMeta(form.id);
@@ -64,6 +71,7 @@ function Detalles() {
     const Frecuencias = ["día", "semana", "mes", "año"];
     const iconos = ["💻", "🏃‍♂️", "📚", "✈️", "💵"];
 
+    // 🎨 Componente visual
     return(
         <div className="tarjeta">
             <form className={styles.formu}>

@@ -40,13 +40,17 @@ const estadoInicial = {
       }
       case "actualizar": {
         const id = accion.meta.id;
-        estado.objetos[id] = {
-          ...estado.objetos[id],
-          ...accion.meta,
+        return {
+          ...estado,
+          objetos: {
+            ...estado.objetos,
+            [id]: {
+              ...estado.objetos[id],
+              ...accion.meta,
+              cuenta_id: accion.meta.cuenta_id === "null" ? null : accion.meta.cuenta_id // Corrige "null"
+            }
+          }
         };
-        const nuevoEstado = { ...estado };
-        // localStorage.setItem('metas', JSON.stringify(nuevoEstado))
-        return nuevoEstado;
       }
       case "borrar": {
         const id = accion.id;
