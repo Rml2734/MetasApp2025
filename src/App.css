@@ -8,21 +8,22 @@
   background: rgba(255, 255, 255, 1); /* equivale a nm-flat-white */
   overflow: hidden;                   /* equivale a overflow-hidden */
   text-decoration: none; /* Esto quita el subrayado */
+  border: 1px solid var(--color-bordes);
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.1),
+             -6px -6px 12px rgba(255, 255, 255, 0.1);
 }
 
 .boton {
-  font-size: 0.875rem;     /* equivale a text-sm */
-  font-weight: bold;       /* equivale a font-bold */
-  padding-top: 0.25rem;    /* equivale a py-1 */
-  padding-bottom: 0.25rem; /* equivale a py-1 */
-  padding-left: 1rem;      /* equivale a px-4 */
-  padding-right: 1rem;     /* equivale a px-4 */
-  border-radius: 9999px;   /* equivale a rounded-full */
+  font-size: 0.875rem;
+  font-weight: bold;
+  padding: 0.25rem 1rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
 }
 
 .boton--negro {
   color: white;                /* equivale a text-white */
-  background: rgba(55, 65, 81, 1); /* equivale a nm-flat-gray-700 (grises suaves con neumorfismo) */
+  background: var(--color-primario);
 }
 
 .boton:hover {
@@ -30,14 +31,14 @@
 }
 
 .boton--rojo {
-  color: #f87171;                  /* equivale a text-red-500 */
-  background: rgba(248, 250, 252, 1); /* equivale a nm-flat-gray-100 (fondo gris claro con neumorfismo) */
-  border: 1px solid #f87171;       /* equivale a border border-red-500 */
+  color: #f87171;
+  background: var(--color-encabezado);
+  border: 1px solid #f87171;
 }
 
 .boton--rojo:hover {
-  background-color: #f87171;       /* equivale a hover:bg-red-500 */
-  color: white;                    /* equivale a hover:text-white */
+  background: #f87171;
+  color: white;
 }
 
 .boton--gris {
@@ -49,10 +50,9 @@
 }
 
 .cuerpo { /* documento index.html */
-  background-color: #f3f4f6; /* gris claro, equivalente a gray-100 */
-  box-shadow: 6px 6px 12px rgba(209, 213, 219, 0.5),
-              -6px -6px 12px rgba(255, 255, 255, 0.8);
-  min-height: 100vh; /* Altura mínima igual a la pantalla */
+  background-color: var(--color-fondo);
+  min-height: 100vh;
+  transition: background-color 0.3s;
 }
 
 .label {
@@ -61,37 +61,54 @@
   font-size: 0.75rem;       /* equivale a text-xs */
   font-weight: bold;        /* equivale a font-bold */
   margin-bottom: 1.5rem;    /* equivale a mb-6 */
+  
 }
 
 .input {
-  background: rgba(248, 250, 252, 1);  /* equivale a nm-inset-gray-100 */
-  width: 100%;                          /* equivale a w-full */
-  border: 1px solid #e5e7eb;            /* equivale a border */
-  border-radius: 0.75rem;               /* equivale a rounded-xl */
-  padding: 0.5rem;                      /* equivale a p-2 */
+  background: var(--color-encabezado);
+  width: 100%;
+  border: 1px solid var(--color-bordes);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  color: var(--color-texto);
+  transition: all 0.3s ease;
 }
 
 .input:focus {
-  outline: none;                        /* equivale a focus:outline-none */
-  background-color: white;              /* equivale a focus:bg-white */
-  border-color: #6b7280;                /* equivale a focus:border-gray-500 */
+ outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 2px rgba(99, 179, 237, 0.3);
 }
 
 .botones {
-  background: linear-gradient(to right, #374151, #e5e7eb, #e5e7eb); /* equivale a bg-gradient-to-r from-gray-700 via-gray-200 to-gray-200 */
-  padding-left: 1rem;   /* equivale a px-4 */
-  padding-right: 1rem;  /* equivale a px-4 */
-  padding-top: 0.75rem; /* equivale a py-3 */
-  padding-bottom: 0.75rem; /* equivale a py-3 */
-  display: flex;        /* equivale a flex */
-  justify-content: space-between; /* equivale a justify-between */
+  background: linear-gradient(
+    to right, 
+    var(--color-primario), 
+    var(--color-bordes), 
+    var(--color-bordes)
+  );
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .auth {
   width: 600px;
-  margin: 0 auto;
+  margin: 2rem auto;
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  padding: 2rem;
+  background: var(--color-fondo);
+  border: 1px solid var(--color-bordes);
+  border-radius: 1rem;
+}
+
+@media (max-width: 768px) {
+  .auth {
+    width: 95%;
+    margin: 1rem auto;
+    transform: none;
+    top: auto;
+  }
 }
 

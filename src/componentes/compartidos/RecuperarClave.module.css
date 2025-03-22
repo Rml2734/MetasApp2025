@@ -1,51 +1,56 @@
 .conte {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    text-align: center;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-   
-  }
-  
-  .conte h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-  }
-  
-  .conte form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .conte input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .conte button {
-    padding: 10px;
-    border: none;
-    background: #007bff;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .conte button:hover {
-    background: #0056b3;
-  }
-  
-  .conte p {
-    margin-top: 15px;
-    color: green;
-  }
-  
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  background: var(--color-fondo);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: var(--color-fondo); /*TRABAJANDO EN TEMA CLARO/OSCURO */
+  color: var(--color-texto); /*TRABAJANDO EN TEMA CLARO/OSCURO */
+  border: 1px solid var(--color-bordes);
+}
+
+.conte h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: var(--color-primario); /* Color destacado */
+}
+
+.conte form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.conte input {
+  padding: 10px;
+  border: 1px solid var(--color-bordes);
+  border-radius: 5px;
+  background: var(--color-encabezado);
+  color: var(--color-texto);
+}
+
+.conte button {
+  padding: 10px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.conte button:hover {
+  background: #0056b3;
+}
+
+.conte p {
+  margin-top: 15px;
+  color: green;
+}
+
 /* Estilo para regresar al incio */
-  /* Modifica el bloque .regresarInicio */
+/* Modifica el bloque .regresarInicio */
 .regresarInicio {
   margin: 25px 0 15px;
   text-align: center;
@@ -63,7 +68,7 @@
 
 /* Efecto de subrayado animado */
 .regresarInicio a::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 0;
   height: 1.5px;
@@ -82,4 +87,3 @@
   text-decoration: none;
   color: #2d3748;
 }
-  

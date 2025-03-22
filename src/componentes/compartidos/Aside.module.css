@@ -1,11 +1,13 @@
 .aside {
   display: flex; /* flex */
   flex-direction: column; /* flex-col */
-  color: #4a5568; /* text-gray-700 */
+  color: var(--color-texto);
   background-color:#f7fafc; /* bg-gray-100 */
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* equivale a shadow */
   width: 15rem; /* w-60  (60 * 4px = 240px = 15rem) */
   height: 100%; /* h-full */
+  background: var(--color-encabezado);
+  border-right: 1px solid var(--color-bordes);transition: background 0.3s, border 0.3s; /* Animación suave */
 }
 
 /* Ocultar aside en móviles */
@@ -20,6 +22,8 @@
       box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
       transform: translateX(-100%);
       z-index: 1000;
+      background: var(--color-encabezado) !important;
+    border-right: 1px solid var(--color-bordes) !important;
   }
 
   /* Mostrar aside cuando el menú está abierto */
@@ -27,3 +31,4 @@
       transform: translateX(0);
   }
 }
+

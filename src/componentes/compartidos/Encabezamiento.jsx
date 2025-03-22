@@ -1,3 +1,6 @@
+// src/componentes/compartidos/Encabezamiento.jsx
+import { usarTema } from "../../memoria/ContextoTema";
+
 import React, { useState, useContext, useEffect, useRef } from "react";
 import styles from "./Encabezado.module.css";
 import { ReactComponent as LogoSVG } from "./logo.svg";
@@ -9,6 +12,7 @@ function Encabezamiento({ toggleMenu, privado }) {
   const [mostrarMenu, setMostrarMenu] = useState(false);
   const [auth] = useContext(ContextoAuth); // Obtén el estado de autenticación
   const menuRef = useRef(null); // Referencia al menú desplegable
+  const { temaOscuro, toggleTema } = usarTema(); //TRABAJANDO EN TEMA CLARO/OSCURO
 
   const toggleMenuPerfil = () => {
     setMostrarMenu(!mostrarMenu);
@@ -36,7 +40,10 @@ function Encabezamiento({ toggleMenu, privado }) {
   }, []);
 
   return (
-    <header className={styles.encabezado}>
+    <header className={styles.encabezado} style={{
+      backgroundColor: 'var(--color-encabezado)',
+      color: 'var(--color-texto)'
+    }}>
       <div className={styles.contenedor}>
         {privado && (
           <button className={styles.menuButton} onClick={toggleMenu}>
@@ -46,6 +53,15 @@ function Encabezamiento({ toggleMenu, privado }) {
         <LogoSVG className={styles.logo} />
         <a className={styles.titulo} href="/">Metas App</a>
       </div>
+
+      <div className={styles.contenedorTema}>
+        <button 
+          onClick={toggleTema}
+          className={styles.botonTema}
+          aria-label="Cambiar tema"
+        >
+          {temaOscuro ? '🌞' : '🌙'}
+        </button>
 
       {/* Mostrar el botón de perfil solo si el usuario está autenticado */}
       {auth.autenticado && (
@@ -63,6 +79,7 @@ function Encabezamiento({ toggleMenu, privado }) {
           )}
         </nav>
       )}
+      </div>
     </header>
   );
 }

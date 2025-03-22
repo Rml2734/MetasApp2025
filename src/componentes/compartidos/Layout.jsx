@@ -10,24 +10,38 @@ function Layout({ privado = false }) {
 
   return (
     <>
-      <Encabezamiento 
-        toggleMenu={() => setMenuAbierto(!menuAbierto)} 
-        privado={privado} 
+      <Encabezamiento
+        toggleMenu={() => setMenuAbierto(!menuAbierto)}
+        privado={privado}
       />
 
-      <main className={styles.main}>
-        {privado && <Aside menuAbierto={menuAbierto} />}
+      <main
+        className={styles.main}
+        style={{
+          backgroundColor: "var(--color-fondo)",
+          color: "var(--color-texto)",
+        }}
+      >
+        {privado && (
+          <Aside
+            menuAbierto={menuAbierto}
+            style={{
+              backgroundColor: "var(--color-encabezado)",
+              color: "var(--color-texto)",
+            }}
+          />
+        )}
         <section className={styles.section}>
           <Outlet context={{ cerrarMenu: () => setMenuAbierto(false) }} />
         </section>
       </main>
 
-      <Pie />
+      <Pie style={{ backgroundColor: "var(--color-pie)" }} />
 
       {/* Overlay para móviles */}
       {menuAbierto && (
-        <div 
-          className={styles.overlay} 
+        <div
+          className={styles.overlay}
           onClick={() => setMenuAbierto(false)}
         ></div>
       )}

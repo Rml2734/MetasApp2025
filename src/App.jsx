@@ -1,3 +1,4 @@
+import { ProveedorTema } from "./memoria/ContextoTema"; //TEMA OSCURO/CLARO
 import React, { useContext, useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./componentes/compartidos/Layout";
@@ -59,6 +60,7 @@ function App() {
   }
 
   return (
+    <ProveedorTema>
     <Routes>
       {/* Ruta principal - redirige a /inicio */}
       <Route path="/" element={<Navigate to="/inicio" />} />
@@ -89,6 +91,7 @@ function App() {
         </Route>
       </Route>
     </Routes>
+    </ProveedorTema>
   );
 }
 

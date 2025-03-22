@@ -101,3 +101,20 @@
 .cerrarSesion:hover {
   background: #f8d7da;
 }
+
+/* TRABAJANDO TEMA CLARO/OSCURO*/
+.contenedorTema {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.botonTema {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 5px;
+  margin-right: 10px;
+}
+

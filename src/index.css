@@ -1,3 +1,25 @@
+/* src/index.css */ /*TRABAJANDO EN TEMA CLARO/OSCURO */
+:root {
+  /* Tema Claro */
+  --color-fondo: #ffffff;
+  --color-texto: #2d3748;
+  --color-encabezado: #f7fafc;
+  --color-bordes: #e2e8f0;
+  --color-primario: #007bff;
+  --color-pie: #f7fafc;
+}
+/*TRABAJANDO EN TEMA CLARO/OSCURO */
+.tema-oscuro {
+  /* Tema Oscuro */
+  --color-fondo: #1a202c;
+  --color-texto: #ffffff;
+  --color-encabezado: #2d3748;
+  --color-bordes: #4a5568;
+  --color-primario: #63b3ed;
+  --color-pie: #2d3748;
+}
+
+
 /* index.css */
 html {
   box-sizing: border-box;
@@ -9,6 +31,10 @@ html {
   box-sizing: inherit; /* Mejor manejo del modelo de caja */
 }
 
+* {
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -16,6 +42,9 @@ body {
   width: 100%;
   max-width: 100%; /* Asegura que no se desborde */
   overflow-x: hidden; /* Doble protección */
+  background-color: var(--color-fondo); /*TRABAJANDO EN TEMA CLARO/OSCURO */
+  color: var(--color-texto); /*TRABAJANDO EN TEMA CLARO/OSCURO */
+  transition: background-color 0.3s, color 0.3s; /*TRABAJANDO EN TEMA CLARO/OSCURO */
 }
 
 /* Contenedor principal si usas uno */

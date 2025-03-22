@@ -77,5 +77,24 @@
 @media (max-width: 768px) {
   .overlay {
       display: block;
+      background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .aside {
+    background: var(--color-encabezado);
+    border-right: 1px solid var(--color-bordes);
+    position: fixed;
+    z-index: 1000;
+    height: 100vh;
+    transition: transform 0.3s ease;
+  }
+
+  .encabezado {
+    background: var(--color-encabezado) !important;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
   }
 }
+
+
