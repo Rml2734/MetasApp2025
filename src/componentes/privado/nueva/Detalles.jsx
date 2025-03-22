@@ -29,6 +29,8 @@ function Detalles() {
       };
     const navegar = useNavigate();
 
+    
+
     const metaMemoria = estado.objetos[id];
 
      // 🔄 Inicializar el formulario al cargar el componente

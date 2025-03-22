@@ -12,7 +12,7 @@ function Registro() {
   const [auth, enviarAuth] = useContext(ContextoAuth);
   const enviar = async (form) => {
     const token = await registrarse(form);
-    enviarAuth({ tipo: 'colocar', token });
+    enviarAuth({ tipo: 'colocar', token }); // Actualizar el estado de autenticación
     navegar('/lista');
   };
 
@@ -20,6 +20,7 @@ function Registro() {
     enviar={enviar}
     titulo="Registro"
     boton="Registrarme"
+    mostrarRegresarInicio={true} // Prop para mostrar el enlace
   ></Credenciales>
 
 }

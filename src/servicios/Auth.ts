@@ -1,6 +1,5 @@
 import { CredencialesTipo } from "../tipos/CredencialesTipo";
 
-
 interface Token {
   token: string;
 }
@@ -13,16 +12,15 @@ export async function registrarse(credenciales: CredencialesTipo): Promise<Token
       "content-type": "application/json; charset=UTF-8",
     },
   });
-  if (!response.ok) throw new Error("Error en registro"); // Mejor manejo de errores
-  
-  const { token } = await response.json(); // Destructuración directa
-  
+  if (!response.ok) throw new Error("Error en registro");
+
+  const { token } = await response.json();
+
   // 🔥 Guardar token en localStorage
-  localStorage.setItem('token', token);
+  localStorage.setItem("token", token);
   
   return { token };
-};
-
+}
 
 export async function acceder(credenciales: CredencialesTipo): Promise<Token> {
   const response = await fetch("/api/login", {
@@ -32,26 +30,34 @@ export async function acceder(credenciales: CredencialesTipo): Promise<Token> {
       "content-type": "application/json; charset=UTF-8",
     },
   });
+
   if (!response.ok) {
-    const errorData = await response.json(); // Lee el mensaje de error del backend
-    if (errorData.error === "jwt expired") {
-      // Lógica para redirigir al usuario a login o refrescar el token
-      throw new Error("El token ha expirado, por favor inicie sesión nuevamente.");
-    }
+    const errorData = await response.json();
     throw new Error(errorData.error || "Error en login");
   }
 
   const { token } = await response.json();
-  
+
+  console.log("🔑 Token recibido:", token); // Verifica si el backend está enviando el token correcto
+
+  if (!token) {
+    console.error("❌ No se recibió un token válido del backend.");
+    throw new Error("Error al recibir el token.");
+  }
+
   // 🔥 Guardar token en localStorage
-  localStorage.setItem('token', token);
-  
+  localStorage.setItem("token", token);
+
+  console.log("✅ Token guardado en localStorage:", localStorage.getItem("token"));
+
   return { token };
 }
 
-// En Auth.ts
+
+// 🔥 Función para cerrar sesión correctamente
 export function cerrarSesion(): void {
-  localStorage.removeItem('token');
-  // Opcional: Redirigir a la página de login
-  window.location.href = '/login';
+  console.log("🚪 Cerrando sesión...");
+  localStorage.removeItem("token");  // Eliminar el token de autenticación
+  localStorage.removeItem("metas");  // Limpiar las metas del usuario
+  window.location.href = "/inicio";   // Redirigir a la página de acceso
 }

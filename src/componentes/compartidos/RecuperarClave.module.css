@@ -6,6 +6,7 @@
     background: white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   
   }
   
   .conte h2 {
@@ -42,4 +43,43 @@
     margin-top: 15px;
     color: green;
   }
+  
+/* Estilo para regresar al incio */
+  /* Modifica el bloque .regresarInicio */
+.regresarInicio {
+  margin: 25px 0 15px;
+  text-align: center;
+}
+
+.regresarInicio a {
+  color: #4a5568;
+  text-decoration: none !important;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+
+/* Efecto de subrayado animado */
+.regresarInicio a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1.5px;
+  bottom: -3px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.regresarInicio a:hover::after {
+  width: 100%;
+}
+
+/* Elimina el hover anterior */
+.regresarInicio a:hover {
+  text-decoration: none;
+  color: #2d3748;
+}
   

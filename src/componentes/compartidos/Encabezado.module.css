@@ -54,3 +54,50 @@
       display: none;
   }
 }
+
+/* Contenedor del perfil */
+.perfilContainer {
+  position: relative;
+  display: inline-block;
+}
+
+/* Botón del perfil */
+.perfilBoton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* Icono del perfil */
+.perfilIcono {
+  width: 32px;
+  height: 32px;
+}
+
+/* Menú desplegable */
+.menuDesplegable {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 100;
+}
+
+/* Botón de cerrar sesión */
+.cerrarSesion {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 14px;
+  color: #d9534f;
+}
+
+.cerrarSesion:hover {
+  background: #f8d7da;
+}

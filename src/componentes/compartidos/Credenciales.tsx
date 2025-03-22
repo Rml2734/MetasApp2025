@@ -6,9 +6,10 @@ interface CredencialesProps {
   enviar: Function;
   titulo: string;
   boton: string;
+  mostrarRegresarInicio?: boolean; // Nueva prop
 }
 
-function Credenciales({ enviar, titulo, boton }: CredencialesProps) {
+function Credenciales({ enviar, titulo, boton,  mostrarRegresarInicio = false }: CredencialesProps) {
   const [form, setForm] = useState({
     usuario: "",
     clave: "",
@@ -51,9 +52,23 @@ function Credenciales({ enviar, titulo, boton }: CredencialesProps) {
           />
         </label>
 
-         {/* Nuevo enlace para "¿Has olvidado tu contraseña?" */}
-         <div className={estilos.olvidoClave}>
-          <Link to="/recuperar-clave">¿Has olvidado tu contraseña?</Link>
+        {/* ESTILOS DE REGRESAR INICIO Y OLVIDAR CONTRASEÑA*/}
+        <div className={estilos['credenciales-enlaces']}>
+          {mostrarRegresarInicio && (
+            <Link 
+              to="/inicio" 
+              className={`${estilos['regresar-inicio']} credenciales-enlace-regreso`}
+             >
+             Regresar al menú principal
+            </Link>
+          )}
+  
+          <Link 
+            to="/recuperar-clave" 
+            className={`${estilos['olvido-clave']} credenciales-enlace-olvido`}
+            >
+            ¿Has olvidado tu contraseña?
+          </Link>
         </div>
 
       </form>

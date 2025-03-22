@@ -7,29 +7,53 @@
 }
 
 .head {
-  font-size: 1.125rem;        /* equivale a text-lg */
-  margin: 0.75rem;            /* equivale a m-3 */
-  text-transform: uppercase;  /* equivale a uppercase */
+  font-size: 1.125rem;
+  margin: 0.75rem;
+  text-transform: uppercase;
 }
 
 .relleno {
   padding: 1rem;
 }
 
-/* Estilos para "¿Has olvidado tu contraseña?" */
-.olvidoClave {
-  text-align: right;
-  margin-top: 5px;
+/* Agrega un contenedor único para los enlaces */
+.credenciales-enlaces {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 15px 0;
+  padding: 0 10px;
 }
 
-.olvidoClave a {
-  color: #007bff;
-  text-decoration: none;
+/* Estilos específicos con mayor especificidad */
+.credenciales-enlaces .regresar-inicio,
+.credenciales-enlaces .olvido-clave {
+  text-decoration: none !important;
+  position: relative;
   font-size: 14px;
+  display: inline-block;
 }
 
-.olvidoClave a:hover {
-  text-decoration: underline;
+/* Colores con especificidad aumentada */
+.credenciales-enlaces .regresar-inicio { color: #4a5568 !important; }
+.credenciales-enlaces .olvido-clave { color: #007bff !important; }
+
+/* Efecto hover protegido */
+.credenciales-enlaces .regresar-inicio::after,
+.credenciales-enlaces .olvido-clave::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1.5px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.credenciales-enlaces .regresar-inicio:hover::after,
+.credenciales-enlaces .olvido-clave:hover::after {
+  width: 100%;
 }
 
 /* 📱 Estilos Responsivos */

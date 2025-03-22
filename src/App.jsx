@@ -1,33 +1,62 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import "./App.css";
 import Layout from "./componentes/compartidos/Layout";
 import Lista from "./componentes/privado/lista/Lista";
 import Detalles from "./componentes/privado/nueva/Detalles";
 import NoEncontrado from "./componentes/compartidos/NoEncontrado";
 import Modal from "./componentes/compartidos/Modal";
-import { useContext, useEffect } from "react";
 import { pedirMetas } from "./servicios/Metas";
 import Registro from "./componentes/publico/registro/Registro";
 import Acceso from "./componentes/publico/acceso/Acceso";
-
-import RecuperarClave from "./componentes/compartidos/RecuperarClave"; // Importamos el nuevo componente
-
+import RecuperarClave from "./componentes/compartidos/RecuperarClave";
 import { Autenticar } from "./componentes/compartidos/Autenticar";
 import { ContextoMetas } from "./memoria/ContextoMetas";
-
-import Inicio from "./componentes/compartidos/Inicio"; // Importa la nueva página de inicio
+import Inicio from "./componentes/compartidos/Inicio";
+import { ContextoAuth } from "./memoria/ContextoAuth"; // Importa el contexto de autenticación
 
 function App() {
-  const [, enviar] = useContext(ContextoMetas);
+  const [, enviarMetas] = useContext(ContextoMetas);
+  const [auth, enviarAuth] = useContext(ContextoAuth); // Obtén el estado de autenticación
+  const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
-      const metas = await pedirMetas();
-      enviar({ tipo: "colocar", metas });
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        console.log("⚠ No hay token, limpiando metas.");
+        enviarMetas({ tipo: "colocar", metas: [] });
+        enviarAuth({ tipo: "cerrarSesion" }); // Limpiar el estado de autenticación
+        setCargando(false);
+        return;
+      }
+
+      try {
+        const payload = JSON.parse(atob(token.split(".")[1]));
+        const usuario = payload.usuario;
+        console.log("🔑 Usuario autenticado:", usuario);
+
+        // Restaurar el estado de autenticación
+        enviarAuth({ tipo: "colocar", token });
+
+        // Cargar las metas del usuario
+        console.log("📡 Cargando metas para:", usuario);
+        const metas = await pedirMetas();
+        enviarMetas({ tipo: "colocar", metas });
+      } catch (error) {
+        console.error("🚨 Error al obtener metas:", error);
+        enviarMetas({ tipo: "colocar", metas: [] });
+      } finally {
+        setCargando(false);
+      }
     }
+
     fetchData();
-  }, [enviar]);
+  }, [auth.token]); // Depende del token de autenticación
+
+  if (cargando) {
+    return <div>Cargando...</div>;
+  }
 
   return (
     <Routes>
@@ -36,12 +65,10 @@ function App() {
 
       {/* Rutas públicas */}
       <Route element={<Layout />}>
-        <Route path="/inicio" element={<Inicio />} />{" "}
-        {/* Página principal con botones */}
+        <Route path="/inicio" element={<Inicio />} />
         <Route path="/acceso" element={<Acceso />} />
         <Route path="/registro" element={<Registro />} />
-        <Route path="/recuperar-clave" element={<RecuperarClave />} />{" "}
-        {/* Nueva ruta */}
+        <Route path="/recuperar-clave" element={<RecuperarClave />} />
         <Route path="*" element={<NoEncontrado />} />
       </Route>
 

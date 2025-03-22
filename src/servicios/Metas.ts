@@ -3,17 +3,27 @@ const token = localStorage.getItem("token"); // 🔥 Obtiene el token del almace
 console.log("Token recuperado:", token); // 👈 Verifica que no sea null/undefined
 
 export async function pedirMetas(): Promise<MetaTipo[]> {
-  //const response = await fetch('/metas.json');
-  const token = localStorage.getItem("token"); // 👈 Obtener token aquí
+  const token = localStorage.getItem("token");
+  if (!token) {
+    console.log("⚠ No hay token, no se pedirán metas.");
+    return [];
+  }
+
+  console.log("📡 Enviando petición con token:", token);
+
   const response = await fetch("/api/metas", {
     headers: {
-      "Authorization": `Bearer ${token}`, // 👈 Incluir token
+      Authorization: `Bearer ${token}`,
     },
   });
-  if (!response.ok) throw new Error("Error al obtener metas");
+
+  if (!response.ok) {
+    console.error("🚨 Error en la petición de metas:", response.status);
+    throw new Error("Error al obtener metas");
+  }
+
   return await response.json();
 }
-
 
 export async function pedirMeta(id: number): Promise<MetaTipo> {
   // const response = await fetch('/meta.json');

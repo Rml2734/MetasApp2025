@@ -6,32 +6,33 @@ import styles from "./Layout.module.css";
 import Aside from "./Aside";
 
 function Layout({ privado = false }) {
-    const [menuAbierto, setMenuAbierto] = useState(false);
+  const [menuAbierto, setMenuAbierto] = useState(false);
 
-    const toggleMenu = () => {
-        setMenuAbierto(!menuAbierto);
-    };
+  return (
+    <>
+      <Encabezamiento 
+        toggleMenu={() => setMenuAbierto(!menuAbierto)} 
+        privado={privado} 
+      />
 
-    const cerrarMenu = () => {
-        setMenuAbierto(false);
-    };
+      <main className={styles.main}>
+        {privado && <Aside menuAbierto={menuAbierto} />}
+        <section className={styles.section}>
+          <Outlet context={{ cerrarMenu: () => setMenuAbierto(false) }} />
+        </section>
+      </main>
 
-    return (
-        <>
-            <Encabezamiento toggleMenu={toggleMenu} privado={privado} />
+      <Pie />
 
-            <main className={styles.main}>
-                {privado && <Aside menuAbierto={menuAbierto} />}
-                <section className={styles.section}>
-                    <Outlet />
-                </section>
-            </main>
-            <Pie />
-
-            {/* Overlay para cerrar el menú al hacer clic fuera */}
-            {menuAbierto && <div className={styles.overlay} onClick={cerrarMenu}></div>}
-        </>
-    );
+      {/* Overlay para móviles */}
+      {menuAbierto && (
+        <div 
+          className={styles.overlay} 
+          onClick={() => setMenuAbierto(false)}
+        ></div>
+      )}
+    </>
+  );
 }
 
 export default Layout;
