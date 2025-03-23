@@ -38,7 +38,14 @@ function App() {
         console.log("🔑 Usuario autenticado:", usuario);
 
         // Restaurar el estado de autenticación
-        enviarAuth({ tipo: "colocar", token });
+        enviarAuth({ 
+          tipo: "colocar",
+          token,
+          usuario: { // 🔥 Enviar datos del usuario al contexto
+            id: payload.id,
+            email: payload.usuario
+          }
+        });
 
         // Cargar las metas del usuario
         console.log("📡 Cargando metas para:", usuario);

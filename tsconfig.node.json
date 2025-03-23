@@ -20,5 +20,10 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.ts"]
+  "include": [
+    "vite.config.ts",
+    "vite.config.*.ts", // Añadir patrones adicionales
+    "**/*.d.ts"         // Incluir tipos globales
+  ],
+  "exclude": ["node_modules"]
 }

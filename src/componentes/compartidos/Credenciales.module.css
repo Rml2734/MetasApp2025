@@ -74,3 +74,27 @@
   }
 }
 
+/* Contenedor para input + botón */
+.contenedorClave {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Botón del ojo */
+.botonOjo {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  padding: 5px;
+  font-size: 1.2rem;
+}
+
+/* Ajuste para no tapar el texto */
+.input[type="password"],
+.input[type="text"] {
+  padding-right: 40px !important;
+}
+

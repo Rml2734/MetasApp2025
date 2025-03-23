@@ -7,7 +7,7 @@ export function Autenticar() {
 
   if (!auth.autenticado) {
     console.log("🔒 Usuario no autenticado, redirigiendo a /acceso");
-    return <Navigate to="/acceso" />;
+    return <Navigate to="/inicio" />;
   }
 
   return <Outlet />;

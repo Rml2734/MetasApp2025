@@ -10,6 +10,9 @@ interface CredencialesProps {
 }
 
 function Credenciales({ enviar, titulo, boton,  mostrarRegresarInicio = false }: CredencialesProps) {
+
+  const [mostrarClave, setMostrarClave] = useState(false); // Nuevo estado
+
   const [form, setForm] = useState({
     usuario: "",
     clave: "",
@@ -44,12 +47,23 @@ function Credenciales({ enviar, titulo, boton,  mostrarRegresarInicio = false }:
         </label>
         <label className="label">
           Clave
+          <div className={estilos.contenedorClave}>
           <input
+            type={mostrarClave ? "text" : "password"} // Cambiar tipo dinámicamente
             className="input"
             placeholder="Escribe tu clave"
             value={clave}
             onChange={(e) => onChange(e, "clave")}
           />
+          <button 
+            type="button" 
+            className={estilos.botonOjo}
+            onClick={() => setMostrarClave(!mostrarClave)}
+            aria-label={mostrarClave ? "Ocultar clave" : "Mostrar clave"}
+          >
+            {mostrarClave ? '👁️' : '👁️🗨️'}
+          </button>
+        </div>
         </label>
 
         {/* ESTILOS DE REGRESAR INICIO Y OLVIDAR CONTRASEÑA*/}

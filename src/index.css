@@ -2,23 +2,38 @@
 :root {
   /* Tema Claro */
   --color-fondo: #ffffff;
-  --color-texto: #2d3748;
-  --color-encabezado: #f7fafc;
+  --color-fondo-hover: #f8fafc;
+  --color-encabezado: #ffffff;
+  --color-texto: #1e293b;
+  --color-texto-secondary: #64748b;
   --color-bordes: #e2e8f0;
-  --color-primario: #007bff;
-  --color-pie: #f7fafc;
-}
-/*TRABAJANDO EN TEMA CLARO/OSCURO */
-.tema-oscuro {
-  /* Tema Oscuro */
-  --color-fondo: #1a202c;
-  --color-texto: #ffffff;
-  --color-encabezado: #2d3748;
-  --color-bordes: #4a5568;
-  --color-primario: #63b3ed;
-  --color-pie: #2d3748;
+  --color-primario: #3b82f6;
+  --color-texto: #1a1a1a; /* Color para tema claro */
+  --color-texto-secundario: #4a5568;
+   --color-primario-opaco: #bfdbfe;
+   
+   --color-completado: #10B981;
+   --color-error: #EF4444;
+   --color-advertencia: #F59E0B;
 }
 
+.tema-oscuro {
+  /* Tema Oscuro */
+  --color-fondo: #0f172a;
+  --color-fondo-hover: #1e293b;
+  --color-encabezado: #1e293b;
+  --color-texto: #f8fafc;
+  --color-texto-secondary: #94a3b8;
+  --color-bordes: #334155;
+  --color-primario: #60a5fa;
+  --color-texto: rgba(255, 255, 255, 0.92); /* Texto más opaco en oscuro */
+  --color-texto-secundario: rgba(255, 255, 255, 0.7);
+  --color-primario-opaco: #1e3a8a;
+  
+  --color-completado: #34D399;
+  --color-error: #F87171;
+  --color-advertencia: #FBBF24;
+}
 
 /* index.css */
 html {
@@ -31,8 +46,10 @@ html {
   box-sizing: inherit; /* Mejor manejo del modelo de caja */
 }
 
+/* Eliminar transiciones globales para mejor rendimiento */
 * {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  box-sizing: border-box;
 }
 
 body {
@@ -74,4 +91,8 @@ img, video, iframe {
   .container {
     max-width: 1140px;
   }
+}
+
+.tarjeta, .boton, .input {
+  transition: all 0.3s ease;
 }

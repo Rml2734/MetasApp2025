@@ -54,6 +54,32 @@ export async function acceder(credenciales: CredencialesTipo): Promise<Token> {
 }
 
 
+
+export async function eliminarUsuario(token: string, usuarioId: number): Promise<void> {
+  try {
+    const response = await fetch(`/api/usuarios/${usuarioId}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (!response.ok) {
+      // 🔥 Manejar casos donde la respuesta no es JSON:
+      const errorText = await response.text();
+      throw new Error(errorText || "Error al eliminar usuario");
+    }
+
+    localStorage.clear();
+  } catch (error) {
+    throw new Error(`Error de conexión: ${error.message}`);
+  }
+}
+
+
+
+
+
+
+
 // 🔥 Función para cerrar sesión correctamente
 export function cerrarSesion(): void {
   console.log("🚪 Cerrando sesión...");

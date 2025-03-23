@@ -1,11 +1,11 @@
 .tarjeta {
   border-radius: 0.75rem;            /* equivale a rounded-xl */
   margin: 1rem;                      /* equivale a m-4 */
-  color: #374151;                    /* equivale a text-gray-700 */
+  color: var(--color-texto); /* Volver a variable en lugar de inherit */
   font-size: 0.75rem;                 /* equivale a text-xs */
   margin-left: 1rem;                  /* equivale a mx-4 */
   margin-right: 1rem;                 /* equivale a mx-4 */
-  background: rgba(255, 255, 255, 1); /* equivale a nm-flat-white */
+   background: var(--color-encabezado); /* Usar variable en lugar de color fijo */
   overflow: hidden;                   /* equivale a overflow-hidden */
   text-decoration: none; /* Esto quita el subrayado */
   border: 1px solid var(--color-bordes);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import estilos from "./RecuperarClave.module.css"; // Importamos estilos
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom"; // Añadir este import
@@ -10,7 +10,7 @@ function RecuperarClave() {
   const [cargando, setCargando] = useState(false);
   const navegar = useNavigate();
 
-  const manejarEnvio = async (e) => {
+  const manejarEnvio = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setMensaje("");
 
@@ -40,7 +40,9 @@ function RecuperarClave() {
       setTimeout(() => navegar("/acceso"), 3000);
 
     } catch (error) {
-      setMensaje(`❌ ${error.message || "Error de conexión con el servidor."}`);
+      let mensajeError = "Error desconocido";
+  if (error instanceof Error) mensajeError = error.message;
+  setMensaje(`❌ ${mensajeError}`);
     } finally {
       setCargando(false);
     }
@@ -66,7 +68,7 @@ function RecuperarClave() {
       {mensaje && <p>{mensaje}</p>}
 
       <div className={estilos.regresarInicio}>
-        <Link to="/inicio">← Regresar al menú principal</Link>
+        <Link to="/inicio" >← Regresar al menú principal</Link>
       </div>
     
     </div>

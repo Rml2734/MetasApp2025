@@ -14,12 +14,12 @@
 }
 
 .vinculo:hover {
-  background-color: #edf2f7; /* equivale a hover:bg-gray-200 */
+  background-color: grey; /* equivale a hover:bg-gray-200 */
 }
 
 .texto {
   margin-left: 0.5rem; /* ml-2 -> 8px (0.5rem) */
   font-size: 0.875rem; /* text-sm -> 14px (0.875rem) */
   font-weight: 600; /* font-semibold */
-  color: #1a202c; /* equivale a text-gray-900 */
+  color: var(--color-texto); /* Usar variable en lugar de color fijo */
 }

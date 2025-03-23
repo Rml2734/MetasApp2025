@@ -4,6 +4,8 @@ import styles from "./Detalles.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { actualizarMeta, borrarMeta, crearMeta } from "../../../servicios/Metas";
 import { ContextoMetas } from "../../../memoria/ContextoMetas";
+import { motion } from "framer-motion";
+import { Howl } from 'howler';
 
 function Detalles() {
     const { id } = useParams(); // ID será `undefined` en creación
@@ -47,6 +49,7 @@ function Detalles() {
     const enCrear = async () => {
         const nuevaMeta = await crearMeta(form);
         enviar({ tipo: 'crear', meta: nuevaMeta });
+        new Howl({ src: ['https://assets.mixkit.co/sfx/418/418-preview.mp3'] }).play();
         navegar('/lista');
     }
 
@@ -55,6 +58,7 @@ function Detalles() {
         if (!form.id) return; // 👈 Asegúrate de que exista form.id
         const metaActualizada = await actualizarMeta(form);
         enviar({ tipo: 'actualizar', meta: metaActualizada });
+        new Howl({ src: ['https://assets.mixkit.co/sfx/2570/2570-preview.mp3'] }).play();
         navegar('/lista');
     } 
 
@@ -75,107 +79,133 @@ function Detalles() {
 
     // 🎨 Componente visual
     return(
-        <div className="tarjeta">
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="tarjeta"
+        >
             <form className={styles.formu}>
-                <label className="label">
+                <motion.label className="label" whileHover={{ scale: 1.02 }}>
                     Describe tu meta
                     <input 
                         className="input"
                         placeholder="ej. 52 caminatas"
-                        value={detalles}
+                        value={form.detalles}
                         onChange={(e) => onChange(e, "detalles")}
                     />
-                </label>
-                <label className="label">
-                    ¿Con que seguimiento deseas cumplir tu meta?
+                </motion.label>
+
+                <motion.label className="label" whileHover={{ scale: 1.02 }}>
+                    ¿Con qué seguimiento deseas cumplir tu meta?
                     <span>(ej. 1 vez a la semana)</span>
                     <div className={styles.semana}>
                         <input
-                            className={`input ${styles.semana1}`} 
-                            type="number" 
-                            value={eventos}
+                            className={`input ${styles.semana1}`}
+                            type="number"
+                            value={form.eventos}
                             onChange={(e) => onChange(e, "eventos")}
                         />
-                        <select 
+                        <select
                             className="input"
-                            value={periodo}
+                            value={form.periodo}
                             onChange={(e) => onChange(e, "periodo")}
                         >
-                            {Frecuencias.map((opcion) => (
-                            <option key={opcion} value={opcion}>
-                            {opcion}</option>
+                            {["día", "semana", "mes", "año"].map(opcion => (
+                                <option key={opcion} value={opcion}>{opcion}</option>
                             ))}
                         </select>
                     </div>
-                </label>
-                <label className="label">
-                    ¿Cuantas veces deseas completar esta meta?
+                </motion.label>
+
+                <motion.label className="label" whileHover={{ scale: 1.02 }}>
+                    ¿Cuántas veces deseas completar esta meta?
                     <input
-                        className="input" 
-                        type="number" 
-                        value={meta}
+                        className="input"
+                        type="number"
+                        value={form.meta}
                         onChange={(e) => onChange(e, "meta")}
                     />
-                </label>
-                <label className="label">
+                </motion.label>
+
+                <motion.label className="label" whileHover={{ scale: 1.02 }}>
                     ¿Tienes una fecha límite?
                     <input
-                        className="input" 
-                        type="date" 
-                        value={plazo}
+                        className="input"
+                        type="date"
+                        value={form.plazo}
                         onChange={(e) => onChange(e, "plazo")}
                     />
-                </label>
-                <label className="label">
-                   ¿Cuantas veces haz completado ya esta meta?
-                   <input
-                        className="input" 
-                        type="number" 
-                        value={completado}
+                </motion.label>
+
+                <motion.label className="label" whileHover={{ scale: 1.02 }}>
+                    ¿Cuántas veces has completado esta meta?
+                    <input
+                        className="input"
+                        type="number"
+                        value={form.completado}
                         onChange={(e) => onChange(e, "completado")}
                     />
-                </label>
-                <label className="label">
-                    Escoge el icono para la meta 
-                    <select 
-                       className="input"
-                       value={icono}
-                       onChange={(e) => onChange(e, "icono")}
+                </motion.label>
+
+                <motion.label className="label" whileHover={{ scale: 1.02 }}>
+                    Escoge el icono para la meta
+                    <select
+                        className="input"
+                        value={form.icono}
+                        onChange={(e) => onChange(e, "icono")}
                     >
-                       {iconos.map((opcion) => (
-                       <option key={opcion} value={opcion}>
-                       {opcion}
-                       </option>
-                       ))}
+                        {["💻", "🏃‍♂️", "📚", "✈️", "💵"].map(opcion => (
+                            <option key={opcion} value={opcion}>{opcion}</option>
+                        ))}
                     </select>
-                </label>
+                </motion.label>
             </form>
-            <div className="botones">
-                {!id && <button 
-                    className="boton boton--negro" 
-                    onClick={enCrear}
-                >Crear
-                </button>}
 
-                {id && <button 
-                    className="boton boton--negro" 
-                    onClick={enActualizar}
-                >Actualizar
-                </button>}
+            <motion.div className="botones" layout>
+                {!id && (
+                    <motion.button
+                        className="boton boton--negro"
+                        onClick={enCrear}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        ✨ Crear Meta
+                    </motion.button>
+                )}
 
-                {id && <button 
-                    className="boton boton--rojo" 
-                    onClick={enBorrar}
-                >Borrar
-                </button>}
+                {id && (
+                    <motion.button
+                        className="boton boton--negro"
+                        onClick={enActualizar}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        🚀 Actualizar
+                    </motion.button>
+                )}
 
-                <button 
+                {id && (
+                    <motion.button
+                        className="boton boton--rojo"
+                        onClick={enBorrar}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        🗑️ Borrar
+                    </motion.button>
+                )}
+
+                <motion.button
                     className="boton boton--gris"
-                    onClick={regresar}
-                >Cancelar
-                </button>
-            </div>
-        </div>
+                    onClick={() => navegar('/lista')}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                >
+                    ✖️ Cancelar
+                </motion.button>
+            </motion.div>
+        </motion.div>
     );
 }
 

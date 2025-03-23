@@ -1,94 +1,125 @@
+/* Estilos base del encabezado */
 .encabezado {
   /* Ajusta este valor si "h-xl" tiene otro significado en tu proyecto */
   height: 48px;           /* h-xl: altura extra grande (ejemplo) */
   display: flex;           /* flex: establece display flex */
   justify-content: space-between; /* justify-between: distribuye los hijos con espacio entre ellos */
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 
-              0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow: sombra ligera */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   background-color: #ffffff; /* bg-white: fondo blanco */
   color: #4a5568;          /* text-gray-700: color de texto gris */
   position: relative;      /* relative: posición relativa */
+  padding: 0 1rem;
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
 }
 
+/* Contenedor principal */
 .contenedor {
   display: flex;
   align-items: center;
-  padding-left: 1rem; /*16px pl-4 */
+  gap: 0.75rem;
+  padding-left: 0.5rem;
 }
 
+/* Logo de la aplicación */
 .logo {
   margin-right: 0.5rem; /* equivale a mr-2 */
-  height: 2.5rem;      /* equivale a h-10 */
-  width: 2.5rem;       /* equivale a w-10 */
+  height: 2.25rem;
+  width: 2.25rem;
+  color: var(--color-primario);
 }
 
+/* Título de la aplicación */
 .titulo {
-  font-size: 1.125rem; /* Equivalente a text-lg */
+  font-size: 1.1rem;
   line-height: 1.75rem; /* Line-height por defecto de text-lg */
   font-weight: 600; /* Equivalente a font-semibold */
-  color: #1a202c;           /* equivale a text-gray-900 */
+  color: var(--color-texto);
   text-transform: uppercase; /* Equivalente a uppercase */
   text-decoration: none; /* Esto quita el subrayado */
+  letter-spacing: 0.5px;
 }
 
-/* Boton esconder*/
+/* Botón de menú móvil */
 .menuButton {
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 1.4rem;
+  padding: 0.5rem;
   cursor: pointer;
-  padding: 10px;
-  margin-right: 10px;
-  color: #4a5568;
-  transition: transform 0.2s ease-in-out;
+  color: var(--color-texto);
+  padding: 0.5rem;
+  display: block; /* Mostrar por defecto */
+  transition: opacity 0.2s;
 }
 
-/* Pequeña animación cuando se presiona */
-.menuButton:active {
-  transform: scale(0.9);
+.menuButton:hover {
+  opacity: 0.8;
 }
 
-/* Ocultar el botón en pantallas grandes */
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .menuButton {
-      display: none;
+    display: none; /* Ocultar en desktop */
   }
 }
 
-/* Contenedor del perfil */
+/* Menú desplegable de usuario */
 .perfilContainer {
   position: relative;
-  display: inline-block;
+  
 }
 
-/* Botón del perfil */
 .perfilBoton {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 10px;
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition: transform 0.2s;
 }
 
-/* Icono del perfil */
+.perfilBoton:hover {
+  transform: scale(1.05);
+}
+
 .perfilIcono {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-texto);
 }
 
 /* Menú desplegable */
 .menuDesplegable {
   position: absolute;
   right: 0;
-  top: 40px;
-  background: white;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  border-radius: 5px;
-  z-index: 100;
+  top: 3.5rem; /* Reducir distancia desde el botón */
+  background: var(--color-fondo);
+  border: 1px solid var(--color-bordes);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+   min-width: 220px; /* Ancho más compacto */
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 1001;
 }
 
-/* Botón de cerrar sesión */
+.menuDesplegable.mostrar {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Iconos del menú */
+.opcionIcono {
+  width: 18px; /* Reducción de tamaño */
+  height: 18px;
+  stroke-width: 2;
+  color: currentColor;
+}
+
+/* Botón de cerrar sesión NO HAY JSX 
 .cerrarSesion {
   background: none;
   border: none;
@@ -101,20 +132,80 @@
 .cerrarSesion:hover {
   background: #f8d7da;
 }
+  */
 
 /* TRABAJANDO TEMA CLARO/OSCURO*/
 .contenedorTema {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 1rem;
+  padding-right: 0.5rem;
 }
 
+/* Botón de cambio de tema */
 .botonTema {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.5rem;
-  padding: 5px;
-  margin-right: 10px;
+  font-size: 1.4rem;
+  padding: 0.25rem;
+  transition: transform 0.2s;
 }
 
+
+/* Sección de información del usuario */
+.usuarioInfo {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--color-bordes);
+}
+
+.nombreUsuario {
+  font-size: 0.9rem;
+  line-height: 1.2;
+  font-weight: 600;
+  /* color: var(--color-texto); opcional */
+}
+
+.emailUsuario {
+  font-size: 12px; /* Texto más pequeño */
+  color: var(--color-texto-secondary);
+}
+
+/* Elementos del menú */
+.opcionMenu {
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: var(--color-texto);
+  font-size: 0.875rem;
+}
+
+.opcionMenu:hover {
+  background-color: var(--color-fondo-hover);
+}
+
+/* Separador visual */
+.separador {
+  height: 1px;
+  background-color: var(--color-bordes);
+  margin: 0.25rem 0;
+}
+
+/* Opción peligrosa */
+.opcionPeligro {
+  color: #dc2626;
+  
+}
+
+.opcionPeligro:hover {
+  background: #fee2e2;
+}

@@ -3,7 +3,8 @@ import { createContext } from "react";
 {/*LA FUENTE DE LA VERDAD 🎉✨ */}
 const estadoInicial = {
   token: '',
-  autenticado: false
+  autenticado: false,
+  usuario: null // 🔥 Nuevo campo para almacenar datos del usuario
 };
 
 function reductor(estado, accion) {
@@ -11,14 +12,12 @@ function reductor(estado, accion) {
     case "colocar": {
       return {
         token: accion.token,
+        usuario: accion.usuario, // 🔥 Recibir datos del usuario
         autenticado: true
       };
     }
     case "cerrarSesion": {
-      return {
-        token: '',
-        autenticado: false
-      };
+      return estadoInicial; // Limpiar todo
     }
     default:
       throw new Error(`Acción no soportada: ${accion.tipo}`);
