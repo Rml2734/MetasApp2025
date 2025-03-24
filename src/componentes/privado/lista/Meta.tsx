@@ -6,6 +6,7 @@ import { useEffect } from 'react'; // Importar useEffect
 import { motion } from 'framer-motion';
 
 
+
 type MetaProps = MetaTipo
 
 function Meta({ id, icono, eventos, periodo, detalles, meta, completado }: MetaProps) {

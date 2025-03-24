@@ -70,7 +70,11 @@ export async function eliminarUsuario(token: string, usuarioId: number): Promise
 
     localStorage.clear();
   } catch (error) {
-    throw new Error(`Error de conexión: ${error.message}`);
+    let errorMessage = "Error de conexión";
+    if (error instanceof Error) { // 👈 Validar si es un Error
+      errorMessage += `: ${error.message}`;
+    }
+    throw new Error(errorMessage);
   }
 }
 
