@@ -147,7 +147,7 @@
 
 /*COMPLETADO*/
 /* Nuevo estilo para estado completado */
-.boton--completado {
+.botonCompletado {
   background: linear-gradient(
         45deg,
         #22c55e,
@@ -159,10 +159,10 @@
   position: relative;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation: brillo 1.5s infinite linear !important;
+  animation: brillo 1.5s linear !important;
 }
 
-.boton--completado:after {
+.botonCompletado:after {
   content: "";
     position: absolute;
     top: -50%;
@@ -203,4 +203,24 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.boton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.boton:hover {
+  transform: scale(1.05);
+}
+
+
+
+.botonGris {
+  background-color: #cccccc;
+  color: #666666;
 }

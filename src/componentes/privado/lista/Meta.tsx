@@ -64,13 +64,13 @@ function Meta({ id, icono, eventos, periodo, detalles, meta, completado }: MetaP
                     </div>
                 </div>
                 <motion.button 
-                    className={`boton ${completado >= meta ? 'boton--completado' : 'boton--gris'}`}
-                    whileHover={completado < meta ? { scale: 1.05 } : {}}
-                    whileTap={completado < meta ? { scale: 0.95 } : {}}
-                    disabled={completado >= meta}
-                >
-                    {completado >= meta ? '🎉 ¡Logrado!' : 'Completar'}
-                </motion.button>
+    className={`${styles.boton} ${completado >= meta ? styles.botonCompletado : styles.botonGris}`}
+    whileHover={completado < meta ? { scale: 1.05 } : {}}
+    whileTap={completado < meta ? { scale: 0.95 } : {}}
+    disabled={completado >= meta}
+>
+    {completado >= meta ? '🎉 ¡Logrado!' : 'Completar'}
+</motion.button>
             </div>
         </Link>
     );
