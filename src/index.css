@@ -72,6 +72,10 @@ body {
   flex-direction: column;
 }
 
+main {
+  flex: 1; /* Asegura que el contenido empuje el footer hacia abajo */
+}
+
 /* Reglas adicionales para responsividad */
 img, video, iframe {
   max-width: 100%; /* Evita que medios se desborden */

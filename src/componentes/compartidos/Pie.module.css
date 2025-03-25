@@ -8,5 +8,6 @@
   padding-right: 0.5rem; /* equivale a pr-2 */
   color: #ffffff; /* equivale a text-white */
   position: relative; /* equivale a relative */
+  margin-top: auto; /* Asegura que suba si el contenido es corto */
 }
 
