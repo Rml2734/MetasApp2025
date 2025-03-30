@@ -15,7 +15,10 @@ import { ContextoMetas } from "./memoria/ContextoMetas";
 import Inicio from "./componentes/compartidos/Inicio";
 import { ContextoAuth } from "./memoria/ContextoAuth"; // Importa el contexto de autenticación
 
+
+
 function App() {
+  console.log("✅ VITE_API_URL:", import.meta.env.VITE_API_URL);
   const [, enviarMetas] = useContext(ContextoMetas);
   const [auth, enviarAuth] = useContext(ContextoAuth); // Obtén el estado de autenticación
   const [cargando, setCargando] = useState(true);
