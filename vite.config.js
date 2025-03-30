@@ -2,14 +2,12 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react({
-      include: "**/*.{js,jsx,ts,tsx}", // Incluye archivos .js que contienen JSX
+      include: "**/*.{js,jsx,ts,tsx}",
     }),
     svgr({
-      // svgr options: https://react-svgr.com/docs/options/
       svgrOptions: {
         exportType: "named",
         ref: true,
@@ -20,14 +18,17 @@ export default defineConfig({
       include: "**/*.svg",
     }),
   ],
-  // Agregar la configuración del servidor con proxy
-  server: {
+  build: {
+    assetsInclude: ['**/*.css'] // 🔥 Soluciona el error de MIME type
+  },
+  // Solo para desarrollo:
+  server: process.env.NODE_ENV === 'development' ? { // 🔥 Condicional
     proxy: {
       '/api': {
-        target: 'http://localhost:3000', // Ajusta este puerto al de tu backend
+        target: 'http://localhost:10000', // Puerto del backend local
         changeOrigin: true,
         secure: false
       }
     }
-  }
+  } : undefined
 });
