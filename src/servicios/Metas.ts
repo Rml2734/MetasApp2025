@@ -1,6 +1,7 @@
 import { MetaTipo } from "../tipos/MetaTipo";
 const token = localStorage.getItem("token"); // 🔥 Obtiene el token del almacenamiento
 console.log("Token recuperado:", token); // 👈 Verifica que no sea null/undefined
+const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:10000";
 
 export async function pedirMetas(): Promise<MetaTipo[]> {
   const token = localStorage.getItem("token");
@@ -11,7 +12,7 @@ export async function pedirMetas(): Promise<MetaTipo[]> {
 
   console.log("📡 Enviando petición con token:", token);
 
-  const response = await fetch("/api/metas", {
+  const response = await fetch(`${apiUrl}/api/metas`, { // 🔥 URL completa
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -28,7 +29,7 @@ export async function pedirMetas(): Promise<MetaTipo[]> {
 export async function pedirMeta(id: number): Promise<MetaTipo> {
   // const response = await fetch('/meta.json');
   const token = localStorage.getItem("token"); // 👈 Obtener token aquí
-  const response = await fetch(`/api/metas/${id}`, {
+  const response = await fetch(`${apiUrl}/api/metas/${id}`, { // 🔥 URL completa
     headers: {
       "Authorization": `Bearer ${token}`, // 👈 Incluir token
     },

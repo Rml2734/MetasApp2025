@@ -1,11 +1,12 @@
 import { CredencialesTipo } from "../tipos/CredencialesTipo";
+const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:10000";
 
 interface Token {
   token: string;
 }
 
 export async function registrarse(credenciales: CredencialesTipo): Promise<Token> {
-  const response = await fetch("/api/signup", {
+  const response = await fetch(`${apiUrl}/api/signup`, { // 🔥 URL completa
     method: "POST",
     body: JSON.stringify(credenciales),
     headers: {
@@ -23,7 +24,7 @@ export async function registrarse(credenciales: CredencialesTipo): Promise<Token
 }
 
 export async function acceder(credenciales: CredencialesTipo): Promise<Token> {
-  const response = await fetch("/api/login", {
+  const response = await fetch(`${apiUrl}/api/login`, { // 🔥 URL completa
     method: "POST",
     body: JSON.stringify(credenciales),
     headers: {
