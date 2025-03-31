@@ -19,18 +19,19 @@ export default defineConfig({
     }),
   ],
   build: {
+    assetsInclude: ['**/*.css'], // 🔥 Solución para el problema de CSS
     rollupOptions: {
       output: {
-        // 🔥 Asegura nombres de archivos consistentes para CSS y JS
         assetFileNames: "assets/[name]-[hash][extname]",
         entryFileNames: "assets/[name]-[hash].js",
       },
     },
   },
-  server: process.env.NODE_ENV === 'development' ? {
+  base: "/", // 🔥 Asegura rutas correctas en producción
+  server: process.env.NODE_ENV === "development" ? {
     proxy: {
-      '/api': {
-        target: 'http://localhost:10000',
+      "/api": {
+        target: "http://localhost:10000",
         changeOrigin: true,
         secure: false
       }
