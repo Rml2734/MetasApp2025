@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import MetasMemoria from './memoria/Metas.jsx';
 import AuthMemoria from './memoria/Auth.jsx';
 import reportWebVitals from "./reportWebVitals";
-
+import "./styles/styles.css";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

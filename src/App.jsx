@@ -14,7 +14,7 @@ import { Autenticar } from "./componentes/compartidos/Autenticar";
 import { ContextoMetas } from "./memoria/ContextoMetas";
 import Inicio from "./componentes/compartidos/Inicio";
 import { ContextoAuth } from "./memoria/ContextoAuth"; // Importa el contexto de autenticación
-import "./styles.css"; // 👈 Esto fuerza a Vite a incluirlo
+
 
 
 function App() {
