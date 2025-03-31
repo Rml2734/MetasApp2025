@@ -19,13 +19,18 @@ export default defineConfig({
     }),
   ],
   build: {
-    assetsInclude: ['**/*.css'] // 🔥 Soluciona el error de MIME type
+    rollupOptions: {
+      output: {
+        // 🔥 Asegura nombres de archivos consistentes para CSS y JS
+        assetFileNames: "assets/[name]-[hash][extname]",
+        entryFileNames: "assets/[name]-[hash].js",
+      },
+    },
   },
-  // Solo para desarrollo:
-  server: process.env.NODE_ENV === 'development' ? { // 🔥 Condicional
+  server: process.env.NODE_ENV === 'development' ? {
     proxy: {
       '/api': {
-        target: 'http://localhost:10000', // Puerto del backend local
+        target: 'http://localhost:10000',
         changeOrigin: true,
         secure: false
       }
