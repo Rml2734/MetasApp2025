@@ -26,7 +26,7 @@ export async function registrarse(credenciales: CredencialesTipo): Promise<Token
   const { token } = await response.json();
   
   // 🍪 Guardar en Cookies y LocalStorage
-  document.cookie = `token=${token}; Secure; SameSite=None; Path=/`;
+  //document.cookie = `token=${token}; Secure; SameSite=None; Path=/`;
   localStorage.setItem("token", token);
   
   return { token };
