@@ -39,7 +39,7 @@ export async function acceder(credenciales: CredencialesTipo): Promise<Token> {
     body: JSON.stringify(credenciales),
     headers: {
       "Content-Type": "application/json",
-      "Accept": "application/json"
+      "Origin": "https://metasapp2025.onrender.com" // 👈 Header crítico
     },
     credentials: "include", // 👈 Enviar cookies
     mode: "cors"

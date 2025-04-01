@@ -27,6 +27,10 @@ export default defineConfig({
         assetFileNames: "assets/[name]-[hash][extname]",
         entryFileNames: "assets/[name]-[hash].js",
       },
+      input: {
+        main: path.resolve(__dirname, "src/main.tsx"),
+        styles: path.resolve(__dirname, "src/styles.css")
+      },
     },
   },
   base: "/", // 🔥 Asegura rutas correctas en producción
