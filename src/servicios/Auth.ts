@@ -39,24 +39,20 @@ export async function acceder(credenciales: CredencialesTipo): Promise<Token> {
     body: JSON.stringify(credenciales),
     headers: {
       "Content-Type": "application/json",
-      "Origin": "https://metasapp2025.onrender.com" // 👈 Nuevo
+      "Accept": "application/json"
     },
-    credentials: "include",
+    credentials: "include", // 👈 Enviar cookies
     mode: "cors"
   });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(errorText || "Credenciales inválidas");
-  }
+  // Verificar si el backend envía Set-Cookie
+  const token = response.headers.get("Authorization")?.split(" ")[1] 
+    || (await response.json()).token;
 
-  const { token } = await response.json();
-  
-  // 🍪 Configurar Cookie Segura
-  document.cookie = `token=${token}; Secure; SameSite=None; Path=/; Max-Age=3600`;
+  // Configurar cookie manualmente
+  document.cookie = `token=${token}; Secure; SameSite=None; Path=/; Domain=.onrender.com`;
   localStorage.setItem("token", token);
   
-  console.log("✅ Sesión iniciada correctamente");
   return { token };
 }
 
