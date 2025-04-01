@@ -19,6 +19,8 @@ export default defineConfig({
     }),
   ],
   build: {
+    outDir: 'dist',
+    assetsDir: '',
     assetsInclude: ['**/*.css'], // 🔥 Solución para el problema de CSS
     rollupOptions: {
       output: {

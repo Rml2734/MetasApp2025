@@ -12,6 +12,7 @@ export async function registrarse(credenciales: CredencialesTipo): Promise<Token
     headers: {
       "content-type": "application/json; charset=UTF-8",
     },
+    credentials: 'include' // 👈 Añadir esta línea
   });
   if (!response.ok) throw new Error("Error en registro");
 
@@ -30,6 +31,7 @@ export async function acceder(credenciales: CredencialesTipo): Promise<Token> {
     headers: {
       "content-type": "application/json; charset=UTF-8",
     },
+    credentials: 'include' // 👈 Añadir esta línea
   });
 
   if (!response.ok) {
