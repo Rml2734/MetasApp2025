@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
-import path from "path"; // 👈 Añadir esta línea
 
 export default defineConfig({
   plugins: [
@@ -21,19 +20,16 @@ export default defineConfig({
   ],
   build: {
     outDir: 'dist',
-    assetsDir: 'assets',
+    assetsDir: '',
+    assetsInclude: ['**/*.css'], // 🔥 Solución para el problema de CSS
     rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, "src/main.tsx"),
-        styles: path.resolve(__dirname, "src/styles/main.css") // 👈 Ruta corregida
-      },
       output: {
         assetFileNames: "assets/[name]-[hash][extname]",
         entryFileNames: "assets/[name]-[hash].js",
-      }
-    }
+      },
+    },
   },
-  base: "/",
+  base: "/", // 🔥 Asegura rutas correctas en producción
   server: process.env.NODE_ENV === "development" ? {
     proxy: {
       "/api": {
