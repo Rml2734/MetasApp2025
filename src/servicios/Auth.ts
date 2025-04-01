@@ -1,96 +1,89 @@
 import { CredencialesTipo } from "../tipos/CredencialesTipo";
-const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:10000";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 interface Token {
   token: string;
 }
 
+// 🔄 Función de Registro Mejorada
 export async function registrarse(credenciales: CredencialesTipo): Promise<Token> {
-  const response = await fetch(`${apiUrl}/api/signup`, { // 🔥 URL completa
+  const response = await fetch(`${apiUrl}/api/signup`, {
     method: "POST",
     body: JSON.stringify(credenciales),
     headers: {
-      "content-type": "application/json; charset=UTF-8",
+      "Content-Type": "application/json",
+      "Accept": "application/json"
     },
-    credentials: 'include' // 👈 Añadir esta línea
+    credentials: "include",
+    mode: "cors"
   });
-  if (!response.ok) throw new Error("Error en registro");
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.error || "Registro fallido");
+  }
 
   const { token } = await response.json();
-
-  // 🔥 Guardar token en localStorage
+  
+  // 🍪 Guardar en Cookies y LocalStorage
+  document.cookie = `token=${token}; Secure; SameSite=None; Path=/`;
   localStorage.setItem("token", token);
   
   return { token };
 }
 
+// 🔑 Función de Login Definitiva
 export async function acceder(credenciales: CredencialesTipo): Promise<Token> {
-  const response = await fetch(`${apiUrl}/api/login`, { // 🔥 URL completa
+  const response = await fetch(`${apiUrl}/api/login`, {
     method: "POST",
     body: JSON.stringify(credenciales),
     headers: {
-      "content-type": "application/json; charset=UTF-8",
+      "Content-Type": "application/json",
+      "Accept": "application/json"
     },
-    credentials: 'include' // 👈 Añadir esta línea
+    credentials: "include",
+    mode: "cors"
   });
 
   if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.error || "Error en login");
+    const errorText = await response.text();
+    throw new Error(errorText || "Credenciales inválidas");
   }
 
   const { token } = await response.json();
-
-  console.log("🔑 Token recibido:", token); // Verifica si el backend está enviando el token correcto
-
-  if (!token) {
-    console.error("❌ No se recibió un token válido del backend.");
-    throw new Error("Error al recibir el token.");
-  }
-
-  // 🔥 Guardar token en localStorage
+  
+  // 🍪 Configurar Cookie Segura
+  document.cookie = `token=${token}; Secure; SameSite=None; Path=/; Max-Age=3600`;
   localStorage.setItem("token", token);
-
-  console.log("✅ Token guardado en localStorage:", localStorage.getItem("token"));
-
+  
+  console.log("✅ Sesión iniciada correctamente");
   return { token };
 }
 
-
-
+// 🗑️ Función de Eliminación de Usuario
 export async function eliminarUsuario(token: string, usuarioId: number): Promise<void> {
   try {
-    const response = await fetch(`/api/usuarios/${usuarioId}`, {
+    const response = await fetch(`${apiUrl}/api/usuarios/${usuarioId}`, {
       method: "DELETE",
-      headers: { Authorization: `Bearer ${token}` },
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      credentials: "include"
     });
 
-    if (!response.ok) {
-      // 🔥 Manejar casos donde la respuesta no es JSON:
-      const errorText = await response.text();
-      throw new Error(errorText || "Error al eliminar usuario");
-    }
-
+    if (!response.ok) throw new Error("Error al eliminar");
+    
     localStorage.clear();
+    document.cookie = "token=; Max-Age=0; Path=/";
   } catch (error) {
-    let errorMessage = "Error de conexión";
-    if (error instanceof Error) { // 👈 Validar si es un Error
-      errorMessage += `: ${error.message}`;
-    }
-    throw new Error(errorMessage);
+    throw new Error(`Error crítico: ${error instanceof Error ? error.message : "Desconocido"}`);
   }
 }
 
-
-
-
-
-
-
-// 🔥 Función para cerrar sesión correctamente
+// 🚪 Cierre de Sesión Robustecido
 export function cerrarSesion(): void {
-  console.log("🚪 Cerrando sesión...");
-  localStorage.removeItem("token");  // Eliminar el token de autenticación
-  localStorage.removeItem("metas");  // Limpiar las metas del usuario
-  window.location.href = "/inicio";   // Redirigir a la página de acceso
+  localStorage.removeItem("token");
+  document.cookie = "token=; Max-Age=0; Path=/";
+  window.location.href = "/inicio";
 }
