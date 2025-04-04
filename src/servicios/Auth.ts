@@ -38,19 +38,21 @@ export async function acceder(credenciales: CredencialesTipo): Promise<Token> {
     method: "POST",
     body: JSON.stringify(credenciales),
     headers: {
-      "Content-Type": "application/json",
-      "Origin": "https://metasapp2025.onrender.com" // 👈 Header crítico
+      "Content-Type": "application/json"
     },
-    credentials: "include", // 👈 Enviar cookies
+    credentials: "include",
     mode: "cors"
   });
-
-  // Verificar si el backend envía Set-Cookie
-  const token = response.headers.get("Authorization")?.split(" ")[1] 
-    || (await response.json()).token;
-
-  // Configurar cookie manualmente
-  document.cookie = `token=${token}; Secure; SameSite=None; Path=/; Domain=.onrender.com`;
+  
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({ error: "Error desconocido" }));
+    throw new Error(errorData.error || `Error: ${response.status}`);
+  }
+  
+  const data = await response.json();
+  const token = data.token;
+  
+  // Almacena solo en localStorage para simplicidad
   localStorage.setItem("token", token);
   
   return { token };
