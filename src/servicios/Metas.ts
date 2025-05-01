@@ -41,7 +41,7 @@ export async function pedirMeta(id: number): Promise<MetaTipo> {
 export async function crearMeta(meta: MetaTipo): Promise<MetaTipo> {
   // const response = await fetch('/meta.json');
   const token = localStorage.getItem("token"); // 👈 Obtener token aquí
-  const response = await fetch("/api/metas", {
+  const response = await fetch(`${apiUrl}/api/metas`, {
     method: "POST",
     body: JSON.stringify(meta),
     headers: {
@@ -58,7 +58,7 @@ export async function actualizarMeta(meta: MetaTipo): Promise<MetaTipo> {
   // const response = await fetch('/meta.json');
   const token = localStorage.getItem("token"); // 👈 Obtén el token aquí
   if (!token) throw new Error("No hay token de autenticación"); // 👈 Validación
-  const response = await fetch(`/api/metas/${meta.id}`, {
+  const response = await fetch(`${apiUrl}/api/metas/${meta.id}`, {
     method: "PUT",
     body: JSON.stringify(meta),
     headers: {
@@ -74,7 +74,7 @@ export async function actualizarMeta(meta: MetaTipo): Promise<MetaTipo> {
 export async function borrarMeta(id: number): Promise<void> {
   const token = localStorage.getItem("token"); // 👈 Obtener token aquí
   // const response = await fetch('/meta.json');
-  await fetch(`/api/metas/${id}`, {
+  await fetch(`${apiUrl}/api/metas/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${token}`, // 🔥 Agrega esta línea
