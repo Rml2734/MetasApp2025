@@ -38,6 +38,7 @@ export async function acceder(credenciales: CredencialesTipo): Promise<Token> {
         body: JSON.stringify(credenciales),
         headers: {
             "Content-Type": "application/json",
+            "Accept": "application/json" // 👈 Añadir esta línea
         },
         credentials: "include",
         mode: "cors"

@@ -29,9 +29,12 @@ export async function pedirMetas(): Promise<MetaTipo[]> {
 export async function pedirMeta(id: number): Promise<MetaTipo> {
   // const response = await fetch('/meta.json');
   const token = localStorage.getItem("token"); // 👈 Obtener token aquí
+  if (!token) throw new Error("No autenticado"); // 👈 Validación añadida
+
   const response = await fetch(`${apiUrl}/api/metas/${id}`, { // 🔥 URL completa
     headers: {
       "Authorization": `Bearer ${token}`, // 👈 Incluir token
+      "Accept": "application/json" // 👈 Añadir
     },
   });
   if (!response.ok) throw new Error("Meta no encontrada");
@@ -41,12 +44,15 @@ export async function pedirMeta(id: number): Promise<MetaTipo> {
 export async function crearMeta(meta: MetaTipo): Promise<MetaTipo> {
   // const response = await fetch('/meta.json');
   const token = localStorage.getItem("token"); // 👈 Obtener token aquí
+  if (!token) throw new Error("No autenticado");
+
   const response = await fetch(`${apiUrl}/api/metas`, {
     method: "POST",
     body: JSON.stringify(meta),
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
-      Authorization: `Bearer ${token}`, // 🔥 Agrega esta línea
+            "Accept": "application/json", // 👈 Añadir
+            "Authorization": `Bearer ${token}`
     },
   });
   const metaCreada: MetaTipo = await response.json();
