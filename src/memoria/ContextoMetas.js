@@ -15,7 +15,12 @@ const estadoInicial = {
   function reductor(estado, accion) {
     switch (accion.tipo) {
       case "colocar": {
-        const metas = accion.metas;
+        const metas = accion.metas.map(meta => ({
+          ...meta,
+          // 🔥 Formatear fecha para el input type="date"
+          plazo: meta.plazo ? new Date(meta.plazo).toISOString().split('T')[0] : ''
+        }));
+        
         const nuevoEstado = {
           orden: metas.map((meta) => meta.id),
           objetos: metas.reduce(
@@ -23,32 +28,39 @@ const estadoInicial = {
             {}
           ),
         };
-        // localStorage.setItem('metas', JSON.stringify(nuevoEstado))
         return nuevoEstado;
       }
       case "crear": {
-        const id = accion.meta.id; // String(Math.random());
+        const id = accion.meta.id;
+        const nuevaMeta = {
+          ...accion.meta,
+          // 🔥 Asegurar formato de fecha
+          plazo: accion.meta.plazo ? new Date(accion.meta.plazo).toISOString().split('T')[0] : ''
+        };
+        
         const nuevoEstado = {
           orden: [...estado.orden, id],
           objetos: {
             ...estado.objetos,
-            [id]: accion.meta,
+            [id]: nuevaMeta
           },
         };
-        // localStorage.setItem('metas', JSON.stringify(nuevoEstado))
         return nuevoEstado;
       }
       case "actualizar": {
         const id = accion.meta.id;
+        const metaActualizada = {
+          ...accion.meta,
+          // 🔥 Corregir formato de fecha
+          plazo: accion.meta.plazo ? new Date(accion.meta.plazo).toISOString().split('T')[0] : '',
+          cuenta_id: accion.meta.cuenta_id === "null" ? null : accion.meta.cuenta_id
+        };
+        
         return {
           ...estado,
           objetos: {
             ...estado.objetos,
-            [id]: {
-              ...estado.objetos[id],
-              ...accion.meta,
-              cuenta_id: accion.meta.cuenta_id === "null" ? null : accion.meta.cuenta_id // Corrige "null"
-            }
+            [id]: metaActualizada
           }
         };
       }

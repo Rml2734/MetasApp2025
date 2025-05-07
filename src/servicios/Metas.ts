@@ -41,40 +41,56 @@ export async function pedirMeta(id: number): Promise<MetaTipo> {
   return await response.json();
 }
 
+// Función para formatear fecha a ISO
+const formatearFechaParaAPI = (fecha: string) => {
+  return new Date(fecha).toISOString();
+};
+
 export async function crearMeta(meta: MetaTipo): Promise<MetaTipo> {
-  // const response = await fetch('/meta.json');
-  const token = localStorage.getItem("token"); // 👈 Obtener token aquí
+  const token = localStorage.getItem("token");
   if (!token) throw new Error("No autenticado");
+
+  // 🔥 Formatear fecha antes de enviar
+  const metaFormateada = {
+    ...meta,
+    plazo: formatearFechaParaAPI(meta.plazo)
+  };
 
   const response = await fetch(`${apiUrl}/api/metas`, {
     method: "POST",
-    body: JSON.stringify(meta),
+    body: JSON.stringify(metaFormateada), // 👈 Enviar meta formateada
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
-            "Accept": "application/json", // 👈 Añadir
-            "Authorization": `Bearer ${token}`
+      "Accept": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
-  const metaCreada: MetaTipo = await response.json();
-  console.log("Meta creada!", metaCreada);
-  return metaCreada;
+  
+  if (!response.ok) throw new Error("Error creando meta");
+  return await response.json();
 }
 
 export async function actualizarMeta(meta: MetaTipo): Promise<MetaTipo> {
-  // const response = await fetch('/meta.json');
-  const token = localStorage.getItem("token"); // 👈 Obtén el token aquí
-  if (!token) throw new Error("No hay token de autenticación"); // 👈 Validación
+  const token = localStorage.getItem("token");
+  if (!token) throw new Error("No hay token de autenticación");
+
+  // 🔥 Formatear fecha antes de enviar
+  const metaFormateada = {
+    ...meta,
+    plazo: formatearFechaParaAPI(meta.plazo)
+  };
+
   const response = await fetch(`${apiUrl}/api/metas/${meta.id}`, {
     method: "PUT",
-    body: JSON.stringify(meta),
+    body: JSON.stringify(metaFormateada), // 👈 Enviar meta formateada
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
-      Authorization: `Bearer ${token}`, // 🔥 Agrega esta línea
+      Authorization: `Bearer ${token}`,
     },
   });
-  const metaActualizada: MetaTipo = await response.json();
-  console.log("Meta actualizada!", metaActualizada);
-  return metaActualizada;
+
+  if (!response.ok) throw new Error("Error actualizando meta");
+  return await response.json();
 }
 
 export async function borrarMeta(id: number): Promise<void> {
