@@ -6,4 +6,5 @@ export interface MetaTipo {
     detalles: string;
     meta: number;
     completado: number;
+    plazo: string;
   }
