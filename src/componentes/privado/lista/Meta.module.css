@@ -149,8 +149,8 @@
     flex-direction: column;
     text-align: center;
     padding: 1rem;
-    width: 100% !important; /* 95% Más consistencia */
-    margin: 1rem 0 !important; /*1rem auto */
+    width: 95% !important; /* 95% Más consistencia */
+    margin: 1rem auto !important; /*1rem auto */
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Sombras más sutiles en móvil */
   }
 
