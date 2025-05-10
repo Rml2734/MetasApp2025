@@ -10,7 +10,10 @@
   flex-direction: column;
   align-items: center; /* Centra en pantallas pequeñas */
   width: 100%;
-  padding: 1rem;
+  padding: 0 1rem; /* Añadir padding anterior padding: 1rem; */
+  margin: 0 auto; /*Borrar si no hay cambios en produccion*/
+  box-sizing: border-box; /* Previene desbordamientos borrar si no hay en produccion */
+  max-width: 1400px; /* Límite máximo BORRAR SI NO HAY CAMBIOS EN PRODUCCION*/
 }
 
 .meta {
@@ -23,6 +26,7 @@
   
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   width: 95%; /* Se expanden en pantallas grandes sin quedar pegadas */
+  max-width: none !important;
   margin-bottom: 1rem; /* Espaciado entre metas */
   color: var(--color-texto); /* Asegurar color heredado */
   transition: all 0.3s ease;
@@ -145,8 +149,8 @@
     flex-direction: column;
     text-align: center;
     padding: 1rem;
-    width: 95% !important; /* Más consistencia */
-    margin: 1rem auto !important;
+    width: 100% !important; /* 95% Más consistencia */
+    margin: 1rem 0 !important; /*1rem auto */
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Sombras más sutiles en móvil */
   }
 
