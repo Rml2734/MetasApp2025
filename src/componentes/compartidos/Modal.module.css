@@ -1,16 +1,23 @@
 .fixed {
-  display: flex; /* flex */
-  align-items: center; /* items-center */
-  position: fixed; /* fixed */
-  top: 0; /* inset-0 */
-  right: 0; /* inset-0 */
-  bottom: 0; /* inset-0 */
-  left: 0; /* inset-0 */
-  background-color: rgba(31, 41, 55, 0.75); /* equivale a bg-gray-500 bg-opacity-75 */
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(31, 41, 55, 0.75);
+  z-index: 2000; /* Nivel superior */
 }
 
 .fixed2 {
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  z-index: 2001; /* Encima del overlay */
+  width: 90%;
+  max-width: 500px;
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
 }
-

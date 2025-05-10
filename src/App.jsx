@@ -87,7 +87,7 @@ function App() {
       {/* Rutas privadas - requieren autenticación */}
       <Route element={<Layout privado />}>
         <Route element={<Autenticar />}>
-          <Route path="/lista" element={<Lista />}>
+          <Route path="/lista" element={<Lista cerrarMenu={() => setMenuAbierto(false)}/>}>
             <Route
               path="/lista/:id"
               element={
@@ -97,7 +97,7 @@ function App() {
               }
             />
           </Route>
-          <Route path="/nueva" element={<Detalles />} />
+          <Route path="/nueva" element={<Detalles cerrarMenu={() => setMenuAbierto(false)}/>} />
         </Route>
       </Route>
     </Routes>

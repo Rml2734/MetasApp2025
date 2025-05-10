@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import Encabezamiento from "./Encabezamiento";
 import Pie from "./Pie";
 import styles from "./Layout.module.css";
@@ -7,7 +7,13 @@ import Aside from "./Aside";
 
 function Layout({ privado = false }) {
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const location = useLocation(); // <-- Ahora funciona correctamente
 
+  useEffect(() => {
+    setMenuAbierto(false);
+  }, [location.pathname]);
+
+ 
   return (
     <>
       <Encabezamiento

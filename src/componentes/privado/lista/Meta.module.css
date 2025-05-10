@@ -1,3 +1,10 @@
+/* Añadir al inicio del CSS */
+:root {
+  --espacio-vertical-movil: 1.2rem;
+  --espacio-vertical-escritorio: 2rem;
+}
+
+
 .meta-container {
   display: flex;
   flex-direction: column;
@@ -13,6 +20,7 @@
   padding: 1.5rem; /* Mayor padding para que no se vea apretado */
   background: var(--color-encabezado); /* Cambiar white por variable */
   border-radius: 12px;
+  
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   width: 95%; /* Se expanden en pantallas grandes sin quedar pegadas */
   margin-bottom: 1rem; /* Espaciado entre metas */
@@ -42,6 +50,7 @@
 .correr {
   display: flex;
   align-items: center;
+  
 }
 
 .completo {
@@ -58,7 +67,7 @@
   margin-left: 0.25rem;
 }
 
-.incio {
+.inicio {
   position: relative;
   margin: 0.5rem 1.25rem;
 }
@@ -114,21 +123,34 @@
   .meta {
     width: 98%; /* Hace que ocupe más espacio horizontal sin tocar los bordes */
     max-width: 1400px; /* Asegura un límite máximo */
+    padding: 2rem; /* Más espacio interno */
   }
+  
   .barra1 {
     max-width: 100%; /* La barra ocupa el 100% del ancho disponible */
   }
+
+  .meta {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 }
 
 /* Estilos específicos para móviles */
-@media (max-width: 600px) {
+@media (max-width: 480px) {
+  .meta-container {
+    padding: var(--espacio-vertical-movil) 0 calc(var(--espacio-vertical-movil) * 2) !important;
+  }
+
   .meta {
     flex-direction: column;
     text-align: center;
     padding: 1rem;
-    width: 90%; /* Reducimos el ancho para que tenga márgenes */
-    margin: 0 auto 1rem auto; /* Centra la meta horizontalmente */
+    width: 95% !important; /* Más consistencia */
+    margin: 1rem auto !important;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Sombras más sutiles en móvil */
   }
+
+  
 
   .frecuencia {
     margin: 0;
@@ -142,6 +164,12 @@
   .completo {
     justify-content: center;
     gap: 0.5rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) { /* Móviles grandes/tablets pequeñas */
+  :root {
+    --espacio-vertical-movil: 1.5rem;
   }
 }
 
@@ -199,10 +227,13 @@
 .detalleTexto {
   color: var(--color-texto);
   font-weight: 500;
-  max-width: 200px;
+  max-width: 300px;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.4;
+  margin: 0.5rem 0;
+  white-space: normal; /* Permitir múltiples líneas */
+  
 }
 
 .boton {
@@ -212,13 +243,13 @@
   font-size: 14px;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  min-width: 120px; /* Ancho mínimo fijo */
+  text-align: center;
 }
 
 .boton:hover {
   transform: scale(1.05);
 }
-
-
 
 .botonGris {
   background-color: #cccccc;

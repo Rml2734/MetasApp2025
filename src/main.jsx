@@ -12,10 +12,10 @@ import reportWebVitals from "./reportWebVitals";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthMemoria>
-      <MetasMemoria> 
-        <BrowserRouter>
-          <App />
+    <AuthMemoria> {/* Proveedor de contexto de autenticación */}
+      <MetasMemoria> {/* Proveedor de contexto de metas */}
+        <BrowserRouter> {/* Enrutador principal */}
+          <App /> {/* Componente raíz */}
         </BrowserRouter>
       </MetasMemoria>
     </AuthMemoria>
