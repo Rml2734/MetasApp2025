@@ -13,7 +13,8 @@
   padding: 0 1rem; /* Añadir padding anterior padding: 1rem; */
   margin: 0 auto; /*Borrar si no hay cambios en produccion*/
   box-sizing: border-box; /* Previene desbordamientos borrar si no hay en produccion */
-  max-width: 1400px; /* Límite máximo BORRAR SI NO HAY CAMBIOS EN PRODUCCION*/
+  max-width: 1400px; /* 1400px Límite máximo BORRAR SI NO HAY CAMBIOS EN PRODUCCION*/
+  
 }
 
 .meta {

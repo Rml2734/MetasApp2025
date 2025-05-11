@@ -17,7 +17,7 @@
   z-index: 2001; /* Encima del overlay */
   width: 90%;
   max-width: 500px;
-  background: white;
+  
   border-radius: 8px;
   padding: 2rem;
 }
