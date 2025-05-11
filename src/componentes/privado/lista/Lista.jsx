@@ -4,6 +4,7 @@ import Meta from "./Meta";
 import { Outlet } from "react-router-dom";
 import { ContextoMetas } from "../../../memoria/ContextoMetas";
 import styles from "./Lista.module.css"; // Nuevo archivo CSS
+import { ReactComponent as DatosSVG } from "./Datos.svg";
 
 function Lista() {
   const [metas] = useContext(ContextoMetas);
@@ -13,8 +14,8 @@ function Lista() {
       {metas.orden.length === 0 ? (
         <div className={styles.estadoVacio}>
           <div className={styles.contenido}>
-            <img 
-              src="./public/img/undraw_next-tasks_y3rm.svg"
+            < 
+              DatosSVG
               alt="Ilustración metas vacías"
               className={styles.ilustracion}
             />
