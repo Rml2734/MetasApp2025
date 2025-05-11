@@ -14,7 +14,7 @@ function Lista() {
         <div className={styles.estadoVacio}>
           <div className={styles.contenido}>
             <img 
-              src="./src/componentes/privado/lista/undraw_next-tasks_y3rm.svg"
+              src="./public/img/undraw_next-tasks_y3rm.svg"
               alt="Ilustración metas vacías"
               className={styles.ilustracion}
             />
