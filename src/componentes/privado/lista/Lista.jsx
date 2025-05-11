@@ -14,9 +14,9 @@ function Lista() {
       {metas.orden.length === 0 ? (
         <div className={styles.estadoVacio}>
           <div className={styles.contenido}>
-            < 
-              DatosSVG
-              alt="Ilustración metas vacías"
+            <DatosSVG
+              role="img"
+              aria-label="Ilustración de metas vacías"
               className={styles.ilustracion}
             />
             <h2 className={styles.titulo}>¡Comienza tu viaje!</h2>
