@@ -24,7 +24,7 @@ function RecuperarClave() {
     setCargando(true);
 
     try {
-      const respuesta = await fetch("http://localhost:3000/api/recuperar-clave", {
+      const respuesta = await fetch("http://localhost:5173/api/recuperar-clave", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

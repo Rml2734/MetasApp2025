@@ -89,8 +89,9 @@
   );
   padding: 0.75rem 1rem;
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: space-around;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .auth {
@@ -103,12 +104,21 @@
   border-radius: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .auth {
     width: 95%;
     margin: 1rem auto;
     transform: none;
     top: auto;
+  }
+  .boton {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 0.8rem; /* También podrías reducir la fuente */
+  }
+  .botones {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
 
