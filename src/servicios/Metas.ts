@@ -99,7 +99,7 @@ export async function borrarMeta(id: number): Promise<void> {
   await fetch(`${apiUrl}/api/metas/${id}`, {
     method: "DELETE",
     headers: {
-      Authorization: `Bearer ${token}`, // 🔥 Agrega esta línea
+      Authorization: `Bearer ${token}`, // 🔥 Agrega esta línea nueva
     },
   });
   console.log("Meta borrada!", id);
