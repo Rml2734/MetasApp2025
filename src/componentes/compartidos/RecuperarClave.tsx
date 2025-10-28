@@ -85,8 +85,9 @@ import estilos from "./RecuperarClave.module.css"; // Importamos estilos
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom"; 
 
-// 🚨 CORRECCIÓN CLAVE: Usar el puerto donde corre tu backend (10000)
-const API_BASE_URL = "http://localhost:10000/api"; 
+// 🚨 CORRECCIÓN CLAVE: Usamos la variable de entorno (VITE_API_URL) que se define en los archivos .env
+// Esto asegura que en PROD apunte a Railway y en DEV apunte a localhost.
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:10000"; 
 
 function RecuperarClave() {
  const [email, setEmail] = useState("");
