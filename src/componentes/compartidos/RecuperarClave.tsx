@@ -106,7 +106,7 @@ function RecuperarClave() {
   setCargando(true);
   try {
    // 🛑 CORRECCIÓN DE URL
-   const respuesta = await fetch(`${API_BASE_URL}/recuperar-clave`, {
+   const respuesta = await fetch(`${API_BASE_URL}/api/recuperar-clave`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email }),
