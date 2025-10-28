@@ -10,6 +10,7 @@ import { pedirMetas } from "./servicios/Metas";
 import Registro from "./componentes/publico/registro/Registro";
 import Acceso from "./componentes/publico/acceso/Acceso";
 import RecuperarClave from "./componentes/compartidos/RecuperarClave";
+import RestablecerClave from "./componentes/compartidos/RestablecerClave"; // IMPORTACIÓN AGREGADA
 import { Autenticar } from "./componentes/compartidos/Autenticar";
 import { ContextoMetas } from "./memoria/ContextoMetas";
 import Inicio from "./componentes/compartidos/Inicio";
@@ -81,6 +82,7 @@ function App() {
         <Route path="/acceso" element={<Acceso />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/recuperar-clave" element={<RecuperarClave />} />
+        <Route path="/restablecer" element={<RestablecerClave />} />
         <Route path="*" element={<NoEncontrado />} />
       </Route>
 

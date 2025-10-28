@@ -1,0 +1,103 @@
+/* Variables de ejemplo (ajusta si usas variables globales) */
+:root {
+  --color-fondo: #2c3e50; 
+  --color-texto: #ecf0f1; 
+  --color-bordes: #34495e; 
+  --color-primario: #3498db; /* Azul primario */
+}
+
+/* Contenedor principal */
+.conte {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: var(--color-fondo);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    color: var(--color-texto);
+}
+
+.conte h2 {
+    color: var(--color-primario);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Estilos del formulario */
+.conte form {
+    display: flex;
+    flex-direction: column;
+}
+
+.conte label {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.conte input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-bordes);
+    border-radius: 5px;
+    background-color: #34495e; /* Fondo del input */
+    color: var(--color-texto);
+}
+
+/* Estilos del botón */
+.conte button {
+    padding: 12px;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.conte button:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+.conte button:disabled {
+    background-color: #5d6d7e; /* Gris para deshabilitado */
+    cursor: not-allowed;
+}
+
+/* Estilos de mensajes (Éxito y Error) */
+.mensajeExito {
+    margin-top: 15px;
+    padding: 10px;
+    color: white;
+    background-color: #27ae60; /* Verde para éxito */
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.mensajeError {
+    margin-top: 15px;
+    padding: 10px;
+    color: white;
+    background-color: #e74c3c; /* Rojo para error */
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Estilos del enlace de regreso */
+.regresarInicio {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.regresarInicio a {
+    color: var(--color-primario);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.regresarInicio a:hover {
+    text-decoration: underline;
+}

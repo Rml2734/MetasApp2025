@@ -1,0 +1,16 @@
+.enlaceRecuperacion {
+    text-align: center;
+    margin-top: 15px; /* Espacio debajo del formulario/Credenciales */
+    font-size: 0.9rem;
+}
+
+.enlaceRecuperacion a {
+    color: var(--color-primario, #3498db); /* Usa el color primario de tu tema */
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.enlaceRecuperacion a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}

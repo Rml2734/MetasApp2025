@@ -97,3 +97,25 @@
   }
 }
 
+
+/* Estilos para el mensaje de éxito (comienza con '✅') */
+.mensajeExito {
+    margin-top: 15px;
+    padding: 10px;
+    color: white;
+    background-color: #27ae60; /* Verde para éxito */
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Estilos para el mensaje de error (comienza con '❌') */
+.mensajeError {
+    margin-top: 15px;
+    padding: 10px;
+    color: white;
+    background-color: #e74c3c; /* Rojo para error */
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+}
