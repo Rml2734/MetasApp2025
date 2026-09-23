@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import estilos from "./RecuperarClave.module.css"; // Usa los estilos existentes
+import estilos from "./RecuperarClave.module.css"; 
 import { useNavigate, Link } from "react-router-dom"; 
 
 // URL de la nueva ruta en tu API
