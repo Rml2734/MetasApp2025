@@ -252,4 +252,3 @@ export async function borrarMeta(id: number): Promise<void> {
 
     console.log("Meta borrada!", id);
 }
-
